@@ -53,6 +53,27 @@ class Ops extends Log {
 
     /**
      * 
+     * @param {*} function_ 
+     */
+    mainFunction(arg){
+       
+    }
+
+
+    /**
+     * 
+     * @param {*} trigger
+     * 
+     * This Should be the negative output. if the
+     * ops value matches this value, it will not
+     * run.  
+     */
+    setRunTrigger(trigger=0){
+        this.runTrigger=trigger;
+    }
+
+    /**
+     * 
      * @returns key for ops
      */
     getKey(){
@@ -89,6 +110,14 @@ class Ops extends Log {
      */
     getDefault(){
         return this.default;
+    }
+
+
+    trigger(ops,arg){
+        let shouldrun = ops[this.key]!=this.runTrigger;
+        if (shouldrun) {
+            this.mainFunction(arg);
+        }
     }
 
     getOps(){
