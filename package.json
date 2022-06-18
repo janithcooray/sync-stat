@@ -1,0 +1,23 @@
+{
+  "name": "sync-stat",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/janithcooray/sync-stat.git"
+  },
+  "author": "janithcooray",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/janithcooray/sync-stat/issues"
+  },
+  "homepage": "https://github.com/janithcooray/sync-stat#readme",
+  "dependencies": {
+    "chokidar": "^3.5.3",
+    "stdio": "^2.1.1"
+  }
+}
