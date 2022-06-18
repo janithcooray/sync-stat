@@ -5,7 +5,7 @@ import { default as Log } from "./log";
  * @class Ops
  * @extends {Log}
  */
-class Ops extends Log {
+export default class Ops extends Log {
 
     constructor(){
         //empty construct
@@ -56,7 +56,14 @@ class Ops extends Log {
      * @param {*} function_ 
      */
     mainFunction(arg){
-       
+       //implement
+    }
+
+    /**
+     * on End Function
+     */
+    onEnd(){
+
     }
 
 
