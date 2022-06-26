@@ -19,7 +19,7 @@
         "stdio": "^2.1.1"
     },
     "scrips": {
-        "sync-stat": "node node_modules/sync-stat/index",
+        "test": "node index -m test",
         "postinstall" : "node node_modules/sync-stat/index -m install"
     }
 }
