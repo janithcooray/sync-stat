@@ -2,6 +2,8 @@
 ---
 ## Pleast note that this is a pre-release, functionality is still partial! <br> Wait for a newer update
 
+[![CodeQL](https://github.com/janithcooray/sync-stat/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/janithcooray/sync-stat/actions/workflows/codeql-analysis.yml)
+[![Node.js Package](https://github.com/janithcooray/sync-stat/actions/workflows/npm-publish.yml/badge.svg)](https://github.com/janithcooray/sync-stat/actions/workflows/npm-publish.yml)
 ---
 ## WTF is this?
 
