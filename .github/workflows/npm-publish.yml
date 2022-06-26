@@ -16,9 +16,8 @@ jobs:
 
       - name: set version
         run: |
-          echo ${{ github.event.release.tag_name }}
-          echo ${{ github.event.release.tag_name }}
-          sed -i "s/___VERSION___/${{ github.event.release.tag_name }}/g" package.json
+          echo ${{ steps.tag.outputs.tag }}
+          sed -i "s/___VERSION___/${{steps.tag.outputs.tag}}/g" package.json
 
       - uses: actions/setup-node@v3
         with:
