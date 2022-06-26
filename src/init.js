@@ -5,6 +5,9 @@ class Init extends Ops {
         /**
          * Add init ops
          */
+    }
+
+    getState = () => {
         
     }
 }
