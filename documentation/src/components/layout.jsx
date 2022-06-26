@@ -2,6 +2,7 @@ import React, { Children } from "react";
 import '../style/main.css'
 import link from 'gatsby';
 import Footer  from "./footer";
+import Sidebar from "./sidebar";
 export default function Layout({children}) {
     return(
         <html>
@@ -9,24 +10,22 @@ export default function Layout({children}) {
 
             </head>
             <header>
-                
-            </header>
-            <body>
-                <div class="sidebar">
-                <a href="#home">Home</a>
-                <a href="#news">Updates</a>
-                <a href="#contact">Docs</a>
-                <a href="#about">About</a>
+            <div class="sidebar">
+                    <Sidebar></Sidebar>
                 </div>
-
-            <div class="content">
-            { children }
+            </header>
+            <body className="ml-64 mt-24">
+            
+            <div className="mx-auto  max-w-6xl" >
+                <div className=" min-h-screen">
+                { children }
+                </div>
+            <Footer ></Footer>
+            <div className="h-60"></div>
             </div>
                
             </body>
-            <Footer>
-
-            </Footer>
+ 
         </html>
     )
 }
