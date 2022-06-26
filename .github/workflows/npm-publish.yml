@@ -15,9 +15,9 @@ jobs:
 
       - name: set version
         run: |
-          echo ${{steps.tag.outputs.tag}}
-          echo ${{steps.tag.outputs.tag}}
-          sed -i "s/___VERSION___/${{steps.tag.outputs.tag}}/g" package.json
+          echo ${{steps.release.outputs.tag_name}}
+          echo ${{steps.release.outputs.tag_name}}
+          sed -i "s/___VERSION___/${{steps.release.outputs.tag_name}}/g" package.json
 
       - uses: actions/setup-node@v3
         with:
@@ -36,7 +36,7 @@ jobs:
           registry-url: https://registry.npmjs.org/
 
       - name: set version
-        run: sed -i "s/___VERSION___/${{steps.tag.outputs.tag}}/g" package.json
+        run: sed -i "s/___VERSION___/${{steps.release.outputs.tag_name}}/g" package.json
 
       - run: npm ci
       - run: npm publish
