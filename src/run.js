@@ -2,15 +2,7 @@ const chokidar = require('chokidar');
 const child_process = require('child_process')
 
 
-function dockerpath(params) {
-    return '"'+params.replace('app/','/var/www/html/')+'"';
-}
 
-function getPath(params) {
-    let pieces = params.split('/')
-    pieces.pop();
-    return pieces.join('/');
-}
 
 // One-liner for current directory
 chokidar.watch('./app',{ignoreInitial: true,usePolling: false}).on('all', (event, path) => {
