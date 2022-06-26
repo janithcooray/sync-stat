@@ -2,13 +2,7 @@ version: "3.9"
     
 services:
   wordpress:
-    depends_on:
-      - db
-    image: wordpress:latest
-    volumes:
-      - wordpress_data:/var/www/html
+    container_name: mytest-container
+    image: sanda3cs/lemp7.4
     ports:
       - "8000:80"
-volumes:
-  db_data: {}
-  wordpress_data: {}

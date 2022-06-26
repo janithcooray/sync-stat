@@ -1,15 +1,11 @@
 {
     "containers":{
-        "contianer_name":{
-            "volume_name":"from",
-            "volume_name3":"from3"
-        },
-        "contianer_name2":{
-            "volume_name2":"from2"
+        "mytest-container":{
+            "/var/www/html":"./test"
         }
     },
     "compose":{
-        
+
     }
 
 }
