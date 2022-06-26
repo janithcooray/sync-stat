@@ -14,7 +14,7 @@ export default class Convert extends Ops {
             package_file.scrips = {};
         }
         package_file.scrips["sync-stat"] = "node node_modules/sync-stat/index";
-        fs.writeFile( this.getProjectRoot() +'/package.json', JSON.stringify(package_file), err => {
+        fs.writeFile( this.getProjectRoot() +'/package.json', JSON.stringify(package_file,null,4), err => {
             if (err) {
               console.error(err);
             }
