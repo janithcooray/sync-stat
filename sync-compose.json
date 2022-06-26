@@ -3,9 +3,5 @@
         "mytest-container":{
             "/var/www/html":"test"
         }
-    },
-    "compose":{
-
     }
-
 }

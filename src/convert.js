@@ -7,9 +7,8 @@ import fs from 'fs';
 export default class Convert extends Ops {
     constructor() {
         super();
-        this.output("adding scripts");
+        this.output("adding run script");
         let package_file = this.getConvertData();
-        this.output(package_file);
         if (package_file.scripts == null) {
             package_file.scripts = {};
         }
