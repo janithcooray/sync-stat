@@ -4,6 +4,7 @@ import Log from "./abstract/log.js";
 
 export default class Init extends Log {
     constructor () {
+        super();
         /**
          * Add init 
          */
@@ -12,16 +13,7 @@ export default class Init extends Log {
             'debug': {description: 'will only debug',default: 0},
         });
         
-        switch (ops.mode) {
-            case "local":
-                    console.log("yay");
-                    if (ops.debug!=0) {
-                        console.log("yay2");
-                    }
-                break;
-            default:
-                break;
-        }
+        //switch (ops.mode) {}
     }
 
     /**
