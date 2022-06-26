@@ -14,7 +14,7 @@ export default class Init extends Log {
         });
         
         let compose = this.getCompose();
-        let containers = this.getContainers(compose);
+        let containers = this.getContainers(compose.containers);
         let container = containers[0];
         this.output(container);
         let volumes = this.getVolumesAttached(compose,container);
