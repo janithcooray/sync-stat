@@ -1,7 +1,7 @@
 {
     "containers":{
         "mytest-container":{
-            "/var/www/html":"./test"
+            "/var/www/html":"test"
         }
     },
     "compose":{

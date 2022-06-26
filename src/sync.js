@@ -13,7 +13,6 @@ export default class Sync extends Log {
 
     async startSync() {
         chokidar.watch(this.fromPath,{ignoreInitial: true,usePolling: false}).on('all', (event, path) => {
-            console.log(event, path);
             if (event=="change" || event == "add") {
                 console.log('copy '+path);
                 try {
@@ -39,7 +38,8 @@ export default class Sync extends Log {
     }
 
     dockerpath(params) {
-        return '"./'+params.replace(this.fromPath,'"'+this.volumePath)+'"';
+        this.output(params)
+        return '"'+params.replace(this.fromPath,this.volumePath)+'"';
     }
     
     getPath(params) {
