@@ -27,7 +27,8 @@ jobs:
         with:
           node-version: 16
           registry-url: https://registry.npmjs.org/
-      - run: npm version prerelease
+      - name: set version to ${{ GITHUB_REF }}
+      - run: sed -i 's/___VERSION___/${{GITHUB_REF}}/g' package.json
       - run: npm ci
       - run: npm publish
         env:
