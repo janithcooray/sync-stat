@@ -13,7 +13,7 @@
     "bugs": {
         "url": "https://github.com/janithcooray/sync-stat/issues"
     },
-    "homepage": "https://github.com/janithcooray/sync-stat#readme",
+    "homepage": "https://sync-stat.nova64.xyz/",
     "dependencies": {
         "chokidar": "^3.5.3",
         "stdio": "^2.1.1"
