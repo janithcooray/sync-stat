@@ -12,14 +12,7 @@ export default class Init extends Log {
             'mode': {key: 'm', args: 1, description: ' GCS or Local??',required: false, default : ["local"]},
             'debug': {description: 'will only debug',default: 0},
         });
-        
-        let compose = this.getCompose()["containers"];
-        let containers = this.getContainers(compose);
-
-        //ONLY FIRST
-        let container = containers[0];
-        let volumes = this.getVolumesAttached(compose,container);
-        this.output(volumes)
+        let volumes = this.getAllVolumes();
     }
 
     /**
@@ -51,4 +44,19 @@ export default class Init extends Log {
         });
         return volumes;
     };
+
+    getAllVolumes = () => {
+        let compose = this.getCompose()["containers"];
+        let containers = this.getContainers(compose);
+
+        let allVolumes = [];
+        containers.forEach(element => {
+          let container = element;
+          let volumes = this.getVolumesAttached(compose,container);
+          volumes.forEach(vols => {
+            allVolumes.push(vols)
+          });
+        });
+        return allVolumes;
+    }
 }
