@@ -1,6 +1,7 @@
 import fs from 'fs';
 import { default as stdio } from 'stdio';
 import Log from "./abstract/log.js";
+import Sync from './sync.js';
 
 export default class Init extends Log {
     constructor () {
@@ -56,7 +57,7 @@ export default class Init extends Log {
           let container = element;
           let volumes = this.getVolumesAttached(compose,container);
           volumes.forEach(vols => {
-            allVolumes.push(vols)
+            allVolumes.push([ container,vols[0], vols[1]]);
           });
         });
         return allVolumes;
@@ -64,8 +65,8 @@ export default class Init extends Log {
 
     assignSync = (volumes) => {
         volumes.forEach(element => {
-            this.output(`from ${element[1]} to ${element[0]}`);
-            
+            this.output(`in ${element[0]} from ${element[2]} to ${element[1]}`);
+            new Sync(element[0],element[1],element[2]);      
         });
     };
 }
