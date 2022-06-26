@@ -4,9 +4,10 @@
 name: Node.js Package
 
 on:
-  release:
-    types: [created]
-
+  push:
+    # Sequence of patterns matched against refs/tags
+    tags:
+      - 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -15,9 +16,9 @@ jobs:
 
       - name: set version
         run: |
-          echo ${{steps.release.outputs.tag_name}}
-          echo ${{steps.release.outputs.tag_name}}
-          sed -i "s/___VERSION___/${{steps.release.outputs.tag_name}}/g" package.json
+          echo ${{ github.event.release.tag_name }}
+          echo ${{ github.event.release.tag_name }}
+          sed -i "s/___VERSION___/${{ github.event.release.tag_name }}/g" package.json
 
       - uses: actions/setup-node@v3
         with:
@@ -36,7 +37,7 @@ jobs:
           registry-url: https://registry.npmjs.org/
 
       - name: set version
-        run: sed -i "s/___VERSION___/${{steps.release.outputs.tag_name}}/g" package.json
+        run: sed -i "s/___VERSION___/${{ github.event.release.tag_name }}/g" package.json
 
       - run: npm ci
       - run: npm publish
