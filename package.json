@@ -20,6 +20,6 @@
     },
     "scripts": {
         "test": "node index -m test",
-        "postinstall" : "node node_modules/sync-stat/index -m install"
+        "postinstall" : "node index -m install"
     }
 }
