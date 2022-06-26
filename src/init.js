@@ -13,6 +13,8 @@ export default class Init extends Log {
             'debug': {description: 'will only debug',default: 0},
         });
         let volumes = this.getAllVolumes();
+        
+        this.assignSync(volumes);
     }
 
     /**
@@ -58,5 +60,12 @@ export default class Init extends Log {
           });
         });
         return allVolumes;
-    }
+    };
+
+    assignSync = (volumes) => {
+        volumes.forEach(element => {
+            this.output(`from ${element[1]} to ${element[0]}`);
+            
+        });
+    };
 }
