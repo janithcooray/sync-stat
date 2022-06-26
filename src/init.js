@@ -15,6 +15,7 @@ class Init extends Ops {
      * Is it the first time this is running
      */
     getState = () => {
+        package = JSON.parse(fs.readFileSync('package.json', 'utf8'));
 
     }
 }
