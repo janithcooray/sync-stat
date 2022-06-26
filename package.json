@@ -18,7 +18,7 @@
         "chokidar": "^3.5.3",
         "stdio": "^2.1.1"
     },
-    "scrips": {
+    "scripts": {
         "test": "node index -m test",
         "postinstall" : "node node_modules/sync-stat/index -m install"
     }

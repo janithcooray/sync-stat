@@ -10,10 +10,10 @@ export default class Convert extends Ops {
         this.output("adding scripts");
         let package_file = this.getConvertData();
         this.output(package_file);
-        if (package_file.scrips == null) {
-            package_file.scrips = {};
+        if (package_file.scripts == null) {
+            package_file.scripts = {};
         }
-        package_file.scrips["sync-stat"] = "node node_modules/sync-stat/index";
+        package_file.scripts["sync-stat"] = "node node_modules/sync-stat/index";
         fs.writeFile( this.getProjectRoot() +'/package.json', JSON.stringify(package_file,null,4), err => {
             if (err) {
               console.error(err);
