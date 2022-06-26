@@ -14,7 +14,9 @@ export default class Init extends Log {
         });
         
         let compose = this.getCompose();
-        this.getContainers(compose)
+        let containers = this.getContainers(compose);
+        let container = containers[0];
+        this.getVolumesAttached(container);
         //switch (ops.mode) {}
     }
 
@@ -35,10 +37,12 @@ export default class Init extends Log {
     getContainers = (compose) =>{
         return compose.forEach(element => {
             containers.push(element);
-        });;
+        });
     };
 
-    getVolumesAttached = () => {
-
-    }
+    getVolumesAttached = (container) => {
+        return compose.forEach(element => {
+            containers.push(element);
+        });
+    };
 }
