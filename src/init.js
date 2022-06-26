@@ -13,6 +13,8 @@ export default class Init extends Log {
             'debug': {description: 'will only debug',default: 0},
         });
         
+        let compose = this.getCompose();
+        this.getContainers(compose)
         //switch (ops.mode) {}
     }
 
@@ -25,17 +27,15 @@ export default class Init extends Log {
        return JSON.parse(fs.readFileSync( getProjectRoot() +'/package.json', 'utf8'));
     }
 
-        //parse Convertdata
-        syncCompose = () => {
-            return JSON.parse(fs.readFileSync( getProjectRoot() +'/sync-compose.json', 'utf8'));
-        };
-    
-        getContainers = (compose) =>{
-            let composeOBJ = JSON.parse(compose);
-            composeOBJ.forEach(element => {
-                console.log();
-            });
-        };
-    }
+    //parse Convertdata
+    getCompose = () => {
+        return JSON.parse(fs.readFileSync( getProjectRoot() +'/sync-compose.json', 'utf8'));
+    };
 
+    getContainers = (compose) =>{
+        let composeOBJ = JSON.parse(compose);
+        composeOBJ.forEach(element => {
+            output(element);
+        });
+    };
 }
