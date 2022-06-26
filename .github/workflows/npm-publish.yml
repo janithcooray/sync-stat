@@ -37,7 +37,11 @@ jobs:
           registry-url: https://registry.npmjs.org/
 
       - name: set version
-        run: sed -i "s/___VERSION___/${{ github.event.release.tag_name }}/g" package.json
+        env:
+          EVENT: ${{ github.event.release.tag_name }}
+        run: |
+          echo $EVENT
+          sed -i "s/___VERSION___/${EVENT}/g" package.json
 
       - run: npm ci
       - run: npm publish
