@@ -10,12 +10,11 @@ export default class Init extends Log {
          * Add init 
          */
         let ops =  stdio.getopt({
-            'mode': {key: 'm', args: 1, description: ' GCS or Local??',required: false, default : ["local"]},
-            'debug': {description: 'will only debug',default: 0},
-            't': {description: 'will only debug',default: false},
+            'mode': {key: 'm', args: 1, description: ' GCS or Local??',required: true, default : ["run"]},
         });
 
         if (!ops.t) {
+            
             let volumes = this.getAllVolumes();
             this.assignSync(volumes);            
         }
