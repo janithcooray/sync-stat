@@ -1,6 +1,6 @@
 import fs from 'fs';
 import { default as stdio } from 'stdio';
-import Log from "./abstract/log";
+import Log from "./abstract/log.js";
 
 export default class Init extends Log {
     constructor () {
@@ -30,7 +30,7 @@ export default class Init extends Log {
      * Is it the first time this is running
      */
     getState = () => {
-       return package = JSON.parse(fs.readFileSync( getProjectRoot() +'/package.json', 'utf8'));
+       return JSON.parse(fs.readFileSync( getProjectRoot() +'/package.json', 'utf8'));
     }
 
 }
