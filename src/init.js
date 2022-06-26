@@ -13,13 +13,13 @@ export default class Init extends Log {
             'debug': {description: 'will only debug',default: 0},
         });
         
-        let compose = this.getCompose();
-        let containers = this.getContainers(compose.containers);
+        let compose = this.getCompose()["containers"];
+        let containers = this.getContainers(compose);
+
+        //ONLY FIRST
         let container = containers[0];
-        this.output(container);
         let volumes = this.getVolumesAttached(compose,container);
         this.output(volumes)
-        //switch (ops.mode) {}
     }
 
     /**
