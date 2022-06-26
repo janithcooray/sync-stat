@@ -1,10 +1,9 @@
 {
-    
-    "contianer_name":[
-                {"volume_name":"from"}
-    ],
-    "contianer_name2":[
-            {"volume_name2":"from2"}
-    ]
-    
+    "contianer_name":{
+        "volume_name":"from",
+        "volume_name3":"from3"
+    },
+    "contianer_name2":{
+        "volume_name2":"from2"
+    }
 }
