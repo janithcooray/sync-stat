@@ -1,6 +1,7 @@
 import fs from 'fs';
 import { default as stdio } from 'stdio';
 import Log from "./abstract/log.js";
+import Convert from './convert.js';
 import Sync from './sync.js';
 
 export default class Init extends Log {
@@ -13,14 +14,23 @@ export default class Init extends Log {
             'mode': {key: 'm', args: 1, description: ' GCS or Local??',required: true, default : ["run"]},
         });
 
-        if (!ops.t) {
-            
-            let volumes = this.getAllVolumes();
-            this.assignSync(volumes);            
+        switch (ops.mode) {
+            case "run":
+                    let volumes = this.getAllVolumes();
+                    this.assignSync(volumes);    
+                break;
+            case "install":
+                    new Convert();
+                break;
+            case "test":
+                this.output("OK")
+                break;
+            default:
+                break;
         }
-        else{
-            this.output("ok");
-        }
+        
+        
+        
     }
 
     /**

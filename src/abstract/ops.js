@@ -1,4 +1,4 @@
-import { default as Log } from "./log";
+import { default as Log } from "./log.js";
 /**
  * Ops.
  *
@@ -8,6 +8,7 @@ import { default as Log } from "./log";
 export default class Ops extends Log {
 
     constructor(){
+        super();
         //empty construct
     }
      
