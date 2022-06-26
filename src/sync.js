@@ -4,40 +4,42 @@ import child_process from 'child_process';
 
 export default class Sync extends Log {
     constructor(containerName,volumePath,fromPath){
+        super();
         this.containerName = containerName;
         this.volumePath = volumePath;
         this.fromPath = fromPath;
+        this.output(this.dockerpath("test/index.php"));
     }
 
     async startSync() {
-        chokidar.watch(fromPath,{ignoreInitial: true,usePolling: false}).on('all', (event, path) => {
-            //console.log(event, path);
+        chokidar.watch(this.fromPath,{ignoreInitial: true,usePolling: false}).on('all', (event, path) => {
+            console.log(event, path);
             if (event=="change" || event == "add") {
                 console.log('copy '+path);
                 try {
-                  child_process.execSync('docker exec ' + this.containerName +' mkdir -p '+dockerpath(getPath(path)));
-                  child_process.execSync('docker cp "'+path+'" ' + this.containerName +':'+dockerpath(path));
+                  child_process.execSync('docker exec ' + this.containerName +' mkdir -p '+this.dockerpath(this.getPath(path)));
+                  child_process.execSync('docker cp "'+path+'" ' + this.containerName +':'+this.dockerpath(path));
                 } catch (error) {
-                    console.log(getPath(path));
+                    console.log(this.getPath(path));
                 }
             }
             if (event=="addDir") {
-              console.log('mkdir'  +dockerpath(path));
-              child_process.execSync('docker exec ' + this.containerName +' mkdir -p '+dockerpath(path));
+              console.log('mkdir'  +this.dockerpath(path));
+              child_process.execSync('docker exec ' + this.containerName +' mkdir -p '+this.dockerpath(path));
             }
             if (event=="unlink") {
-              console.log('remove file ' +dockerpath(path));
-              child_process.execSync('docker exec ' + this.containerName +' rm -f '+dockerpath(path)+'');
+              console.log('remove file ' +this.dockerpath(path));
+              child_process.execSync('docker exec ' + this.containerName +' rm -f '+this.dockerpath(path)+'');
             }
             if (event=="unlinkDir") {
-              console.log('remove dir '+dockerpath(path));
-              child_process.execSync('docker exec ' + this.containerName +' rm -rf '+dockerpath(path)+'');
+              console.log('remove dir '+this.dockerpath(path));
+              child_process.execSync('docker exec ' + this.containerName +' rm -rf '+this.dockerpath(path)+'');
             }
           });
     }
 
     dockerpath(params) {
-        return '"'+params.replace(this.fromPath,'"'+volumePath)+'"';
+        return '"./'+params.replace(this.fromPath,'"'+this.volumePath)+'"';
     }
     
     getPath(params) {
