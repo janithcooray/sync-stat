@@ -24,18 +24,21 @@ export default class Init extends Log {
      * Is it the first time this is running
      */
     getState = () => {
-       return JSON.parse(fs.readFileSync( getProjectRoot() +'/package.json', 'utf8'));
+       return JSON.parse(fs.readFileSync( this.getProjectRoot() +'/package.json', 'utf8'));
     }
 
     //parse Convertdata
     getCompose = () => {
-        return JSON.parse(fs.readFileSync( getProjectRoot() +'/sync-compose.json', 'utf8'));
+        return JSON.parse(fs.readFileSync( this.getProjectRoot() +'/sync-compose.json', 'utf8'));
     };
 
     getContainers = (compose) =>{
-        let composeOBJ = JSON.parse(compose);
-        composeOBJ.forEach(element => {
-            output(element);
-        });
+        return compose.forEach(element => {
+            containers.push(element);
+        });;
     };
+
+    getVolumesAttached = () => {
+
+    }
 }
