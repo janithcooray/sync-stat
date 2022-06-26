@@ -25,4 +25,17 @@ export default class Init extends Log {
        return JSON.parse(fs.readFileSync( getProjectRoot() +'/package.json', 'utf8'));
     }
 
+        //parse Convertdata
+        syncCompose = () => {
+            return JSON.parse(fs.readFileSync( getProjectRoot() +'/sync-compose.json', 'utf8'));
+        };
+    
+        getContainers = (compose) =>{
+            let composeOBJ = JSON.parse(compose);
+            composeOBJ.forEach(element => {
+                console.log();
+            });
+        };
+    }
+
 }
