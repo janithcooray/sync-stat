@@ -6,7 +6,7 @@ export default function Footer(){
 <footer class="bg-white mx-8 w-auto">
     <div class="sm:flex sm:items-center sm:justify-between ">
         <a href="https://flowbite.com/" class="flex items-center mb-4 sm:mb-0">
-            <img src="https://www.docker.com/wp-content/uploads/2022/03/Moby-logo.png" class="mr-3 h-8" alt="Flowbite Logo" />
+            <img height="64" width="54"src="https://www.docker.com/wp-content/uploads/2022/03/Moby-logo.png" class="mr-3 h-8" alt="Flowbite Logo" />
             <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-gray-400">Sync Stat</span>
         </a>
         <ul class="flex flex-wrap items-center mb-6 text-sm text-gray-500 sm:mb-0 ">

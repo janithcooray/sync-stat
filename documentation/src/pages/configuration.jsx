@@ -39,18 +39,22 @@ export default function main(){
             </div>
             <hr />
             <br />
-            <div className="bg-slate-300 rounded h-auto p-8 text-sky-700">
-                <span className="text-red-400">{"{"}</span>
+            <div className="bg-zinc-200 rounded h-auto p-8 text-blue-400">
+                <span className="text-gray-700">sync-compose.json<br/></span>
+                <br />
+                <hr />
+                <br />
+                <span className="text-blue-800">{"{"}</span>
                 <br />
                 <span className="ml-4"></span>
-                <span className="ml-8">"containers":<span className="text-red-400">{"{"}</span></span><br />
-                <span className="ml-12">"mytest-container":<span className="text-red-400">{"{"}</span></span><br />
-                <span className="ml-16">"/var/www/html":"test"</span> <br />
-                <span className="ml-12 text-red-400">{"}"}</span>
+                <span className="ml-4">"containers":<span className="text-blue-800">{"{"}</span></span><br />
+                <span className="ml-12">"contianer_name":<span className="text-blue-800">{"{"}</span></span><br />
+                <span className="ml-16">"to_location":"from_location"</span> <br />
+                <span className="ml-8 text-blue-800">{"}"}</span>
                 <br />
-                <span className="ml-4 text-red-400">{"}"}</span>
+                <span className="ml-4 text-blue-800">{"}"}</span>
                 <br />
-                <span className="text-red-400">{"}"}</span>
+                <span className="text-blue-800">{"}"}</span>
             </div>
         </Layout>
     )

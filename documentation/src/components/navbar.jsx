@@ -8,7 +8,7 @@ export default function Navbar(){
             <a href="#!">
             <div class="flex items-center">
                 <div class="shrink-0">
-                <img src="https://www.docker.com/wp-content/uploads/2022/03/vertical-logo-monochromatic.png" class=" w-10" alt="Avatar"></img>
+                <img height="64" width="64" src="https://www.docker.com/wp-content/uploads/2022/03/vertical-logo-monochromatic.png" class=" w-10" alt="Avatar"></img>
                 </div>
                 <div class="grow ml-3">
                 <p class="text-sm font-semibold text-blue-600">SYNC STAT</p>
