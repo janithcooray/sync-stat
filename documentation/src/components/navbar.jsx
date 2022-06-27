@@ -11,7 +11,7 @@ export default function Navbar(){
                 <img src="https://www.docker.com/wp-content/uploads/2022/03/vertical-logo-monochromatic.png" class=" w-10" alt="Avatar"></img>
                 </div>
                 <div class="grow ml-3">
-                <p class="text-sm font-semibold text-blue-600">DOCKER SYNC</p>
+                <p class="text-sm font-semibold text-blue-600">SYNC STAT</p>
                 </div>
             </div>
             </a>
@@ -40,13 +40,8 @@ export default function Navbar(){
             </a>
           </li>
         </ul>
-        <div className="relative flex w-full sm:w-7/12 md:w-3/12 px-4 w-11 flex-wrap items-stretch lg:ml-auto">
-          <div className="flex">
-            <span className="font-normal leading-snug flex text-center white-space-no-wrap border border-solid border-stone-600 rounded-full text-sm bg-stone-100 items-center rounded-r-none pl-2 py-1 text-stone-800 border-r-0 placeholder-stone-300">
-              <i className="fas fa-search"></i>
-            </span>
-          </div>
-          <input type="text" className="px-2 py-1 h-8 border border-solid  border-stone-600 rounded-full text-sm leading-snug text-stone-700 bg-stone-100 shadow-none outline-none focus:outline-none w-24 font-normal rounded-l-none flex-1 border-l-0 placeholder-stone-300" placeholder="Search stone" />
+        <div className="relative flex w-full sm:w-7/12 md:w-3/12 px-4 w-11 rounded-full flex-wrap items-stretch lg:ml-auto">
+          <input type="text" className="px-2 py-1 h-8 border border-solid  border-stone-600 rounded-full text-sm leading-snug text-stone-700 bg-stone-100 shadow-none outline-none focus:outline-none w-24 font-normal flex-1 placeholder-stone-300 text-center" placeholder="Search" />
         </div>
       </div>
     </div>

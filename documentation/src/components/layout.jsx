@@ -15,7 +15,7 @@ export default function Layout({children}) {
             </div>
             <div className="ml-60" >
                 <div className="min-h-screen mx-auto max-w-4xl">
-                    <div className="h-24"></div>
+                <div className="h-24"></div>
                 { children }
                 </div>
                 <Footer ></Footer>
