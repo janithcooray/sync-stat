@@ -4,13 +4,13 @@ import Layout from "../components/layout";
 export default function main(){
     return(
         <Layout>
-            <center>
             <p className="text-5xl font-bold">
                 Sync Compose Params
             </p>
-            </center>
             <br />
-            <div class="bg-white shadow overflow-hidden sm:rounded-lg">
+            <hr />
+            <br />
+            <div class="bg-white  overflow-hidden ">
             <div class="px-4 py-5 sm:px-6">
                 <h3 class="text-lg leading-6 font-medium text-gray-900">sync-compose.json Container parameters</h3>
                 <p class="mt-1 max-w-2xl text-sm text-gray-500">Container Definition.</p>
@@ -36,6 +36,17 @@ export default function main(){
 
                 </dl>
                 </div>
+            </div>
+            <hr />
+            <br />
+            <div className="bg-slate-300 rounded h-6 p-8">
+                {"{"}
+                "containers":{
+        "mytest-container":{
+            "/var/www/html":"test"
+        }
+    }
+                {"}"}
             </div>
         </Layout>
     )
