@@ -4,9 +4,9 @@ import Layout from "../components/layout"
 export default function index () {
   return(
     <Layout>
-      <h1 className="text-9xl text-center">
-        Coming Soon!
-      </h1>
+      <p className="text-5xl">
+        What The Hell is This??
+      </p>
     </Layout>
   )
 }
