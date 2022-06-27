@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "gatsby"
 
 export default function Sidebar(){
     return(
@@ -26,12 +27,8 @@ export default function Sidebar(){
               </svg>
             </a>
             <ul class="relative accordion-collapse collapse" id="collapseSidenavSecEx2" aria-labelledby="sidenavSecEx2" data-bs-parent="#sidenavSecExample">
-              <li class="relative">
-                <a href="#!" class="flex items-center text-xs py-4 pl-12 pr-6 h-6 overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap rounded hover:text-blue-600 hover:bg-blue-50 transition duration-300 ease-in-out" data-mdb-ripple="true" data-mdb-ripple-color="primary">Link 1</a>
-              </li>
-              <li class="relative">
-                <a href="#!" class="flex items-center text-xs py-4 pl-12 pr-6 h-6 overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap rounded hover:text-blue-600 hover:bg-blue-50 transition duration-300 ease-in-out" data-mdb-ripple="true" data-mdb-ripple-color="primary">Link 2</a>
-              </li>
+              <NavLinker name="Installation" to="/installation"></NavLinker>
+              <NavLinker name="Configuration" to="/configuration"></NavLinker>
             </ul>
           </li>
           <li class="relative" id="sidenavSecEx3">
@@ -107,4 +104,26 @@ export default function Sidebar(){
         </div>
       </div>
     )
+}
+
+function NavLinker(props) {
+  let to=props.to;
+  let name=props.name;
+
+  return(
+    <li class="relative">
+    <Link to={ to } activeClassName="flex items-center text-xs py-4 pl-12 pr-6 h-6 overflow-hidden text-blue-500 text-ellipsis whitespace-nowrap rounded hover:text-blue-600 hover:bg-blue-50 transition duration-300 ease-in-out" class="flex items-center text-xs py-4 pl-12 pr-6 h-6 overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap rounded hover:text-blue-600 hover:bg-blue-50 transition duration-300 ease-in-out" data-mdb-ripple="true" data-mdb-ripple-color="primary">{ name }</Link>
+  </li>
+  )
+}
+
+function NavLinkHead(props) {
+  let to=props.to;
+  let name=props.name;
+
+  return(
+    <li class="relative">
+    <Link to={ to } activeClassName="flex items-center text-xs py-4 pl-12 pr-6 h-6 overflow-hidden text-blue-500 text-ellipsis whitespace-nowrap rounded hover:text-blue-600 hover:bg-blue-50 transition duration-300 ease-in-out" class="flex items-center text-xs py-4 pl-12 pr-6 h-6 overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap rounded hover:text-blue-600 hover:bg-blue-50 transition duration-300 ease-in-out" data-mdb-ripple="true" data-mdb-ripple-color="primary">{ name }</Link>
+  </li>
+  )
 }

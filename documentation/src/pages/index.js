@@ -5,7 +5,7 @@ export default function index () {
   return(
     <Layout>
       <p className="text-5xl font-bold">
-        What The Hell is This??
+        Intro (What The Hell is This?)
       </p>
       <br></br>
       <p>
