@@ -1,10 +1,15 @@
 import React from "react";
 import '../style/main.css'
 import Footer  from "./footer";
+import Navbar from "./navbar";
 import Sidebar from "./sidebar";
+
 export default function Layout({children}) {
     return(
         <div className="">
+            <div className="fixed w-full">
+                <Navbar></Navbar>
+            </div>
             <div class="w-60 fixed">
                 <Sidebar></Sidebar>
             </div>
