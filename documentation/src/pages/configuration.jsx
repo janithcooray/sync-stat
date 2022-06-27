@@ -39,14 +39,18 @@ export default function main(){
             </div>
             <hr />
             <br />
-            <div className="bg-slate-300 rounded h-6 p-8">
-                {"{"}
-                "containers":{
-        "mytest-container":{
-            "/var/www/html":"test"
-        }
-    }
-                {"}"}
+            <div className="bg-slate-300 rounded h-auto p-8 text-sky-700">
+                <span className="text-red-400">{"{"}</span>
+                <br />
+                <span className="ml-4"></span>
+                <span className="ml-8">"containers":<span className="text-red-400">{"{"}</span></span><br />
+                <span className="ml-12">"mytest-container":<span className="text-red-400">{"{"}</span></span><br />
+                <span className="ml-16">"/var/www/html":"test"</span> <br />
+                <span className="ml-12 text-red-400">{"}"}</span>
+                <br />
+                <span className="ml-4 text-red-400">{"}"}</span>
+                <br />
+                <span className="text-red-400">{"}"}</span>
             </div>
         </Layout>
     )
