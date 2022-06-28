@@ -12,3 +12,5 @@ containers:
               - echo hi
             ignore:
               - node_modules/
+            replace:
+              - "string:string"
