@@ -1,6 +1,6 @@
 {
     "name": "sync-stat",
-    "version": "___VERSION___",
+    "version": "1.0.0",
     "description": "",
     "type": "module",
     "main": "index.js",
@@ -19,14 +19,13 @@
         "stdio": "^2.1.1"
     },
     "scripts": {
-        "test": "node index -m test",
-        "postinstall" : "node index -m install"
+        "test": "node index -m test"
     },
     "keywords": [
-      "docker volumes",
-      "docker compose mount",
-      "docker mount speed",
-      "sync-stat",
-      "sync stat"
+        "docker volumes",
+        "docker compose mount",
+        "docker mount speed",
+        "sync-stat",
+        "sync stat"
     ]
 }

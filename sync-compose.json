@@ -2,7 +2,7 @@
     "containers":{
         "mytest-container":{
             "volumes":{
-            "/var/www/html":"test"
+                "/var/www/html":"test"
             }
         }
     }

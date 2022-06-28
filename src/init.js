@@ -81,8 +81,8 @@ export default class Init extends Log {
     assignSync = (volumes) => {
         volumes.forEach(element => {
             this.output(`in ${element[0]} from ${element[2]} to ${element[1]}`);
-            let sync = new Sync(element[0],element[1],element[2]);
-            sync.startSync();      
+            //let sync = new Sync(element[0],element[1],element[2]);
+            //sync.startSync();      
         });
     };
 }
