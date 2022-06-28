@@ -57,7 +57,7 @@ export default class Init extends Log {
 
     getVolumesAttached = (compose,container) => {
         let volumes = [];
-        Object.entries(compose[container]).forEach(element => {
+        Object.entries(compose[container].volumes).forEach(element => {
             volumes.push(element);
         });
         return volumes;
