@@ -11,7 +11,7 @@
                 "/var/www/html/node_modules":"test/node_modules"
             },
             "mode": 775,
-            "owber": "www-data:www-data",
+            "owner": "www-data:www-data",
             "post_run":[
                 "echo something"
             ]

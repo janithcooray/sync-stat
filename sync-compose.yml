@@ -1,0 +1,14 @@
+version: 1
+
+containers: 
+  - my-container:
+      volumes:
+        - volume:
+            from: .app/
+            to: /var/www/html
+            mode: 775
+            owner: www-data:www-data
+            cmd: 
+              - echo hi
+            ignore:
+              - node_modules/
