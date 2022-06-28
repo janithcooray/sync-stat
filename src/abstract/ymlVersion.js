@@ -17,4 +17,16 @@ export default class YamlVersion extends Log {
         return this.version;
     }
 
+    /**
+     * 
+     * @param {*} text 
+     */
+    whenOnIncompatible(text){
+        this.issueMessage = text;
+    }
+
+    onIncompatible(){
+        return this.issueMessage;
+    }
+
 }
