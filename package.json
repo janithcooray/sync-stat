@@ -16,6 +16,7 @@
     "homepage": "https://sync-stat.nova64.xyz/",
     "dependencies": {
         "chokidar": "^3.5.3",
+        "js-yaml": "^4.1.0",
         "stdio": "^2.1.1"
     },
     "scripts": {
