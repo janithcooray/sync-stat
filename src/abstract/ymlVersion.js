@@ -4,6 +4,7 @@ export default class YamlVersion extends Log {
     
     constructor(context){
         this.yml = context.yml;
+        this.context = context;
     }
 
 
