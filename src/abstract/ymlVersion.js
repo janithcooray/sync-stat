@@ -18,7 +18,7 @@ export default class YamlVersion extends Log {
     }
 
     /**
-     * 
+     * set Version Incompatibility Issue
      * @param {*} text 
      */
     whenOnIncompatible(text){
