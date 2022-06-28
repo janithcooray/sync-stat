@@ -1,6 +1,6 @@
 import YamlVersion from "../abstract/ymlVersion";
 
-export default class GetContainers extends YamlVersion{
+export default class getVolumes extends YamlVersion{
 
     constructor(context){
         super(context);
