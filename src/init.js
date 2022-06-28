@@ -16,8 +16,7 @@ export default class Init extends Log {
 
         switch (ops.mode) {
             case "run":
-                    let volumes = this.getAllVolumes();
-                    this.assignSync(volumes);    
+                      
                 break;
             case "install":
                     new Convert();

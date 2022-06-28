@@ -1,6 +1,6 @@
 import Log from "./abstract/log.js";
 
-export default class Init extends Log {
+export default class ProcessJSON extends Log {
     /**
      * retuns the state of 
      * 
