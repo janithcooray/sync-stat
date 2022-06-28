@@ -8,7 +8,9 @@ export default class YamlVersion extends Log {
 
 
     checkCompatibility(){
-
+        if (this.version > context.version) {
+            throw "Version Mismatch - "+ this.issueMessage;
+        }
     }
 
     /**
