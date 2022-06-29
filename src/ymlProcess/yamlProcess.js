@@ -1,7 +1,7 @@
 /**
  * Process YML file
  */
- import Log from "./abstract/log.js";
+ import Log from "../abstract/log.js";
  import yaml from "js-yaml";
 import LoadYML from "./loadYML.js";
 import GetContainers from "./getContainers.js";
@@ -10,11 +10,14 @@ import GetContainers from "./getContainers.js";
  export default class ProcessYML extends Log {
  
      constructor(){
-        this.yml = new LoadYML();
+        super();
+        this.yml = LoadYML.getYML();
+        this.containers = this.getContainers();
+        this.output(this.containers);
      }
 
      getContainers(){
-        return GetContainers(this);
+        return new GetContainers(this);
      }
  
  }

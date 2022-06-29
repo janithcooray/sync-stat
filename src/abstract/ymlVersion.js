@@ -3,6 +3,7 @@ import { default as Log } from "./log.js";
 export default class YamlVersion extends Log {
     
     constructor(context){
+        super();
         this.yml = context.yml;
         this.context = context;
     }
@@ -12,9 +13,9 @@ export default class YamlVersion extends Log {
      * will Throw an error if version is below expected
      */
     checkCompatibility(){
-        if (this.version > context.version) {
-            this.output("ignoring error - " + this.issueMessage)
-        }
+        //if (this.version > context.version) {
+       //     this.output("ignoring error - " + this.issueMessage)
+       // }
     }
 
     /**

@@ -3,7 +3,8 @@
  */
 import Log from "./abstract/log.js";
 import yaml from "js-yaml";
-export default class ProcessYML extends Log {
+import ProcessYML from "./ymlProcess/yamlProcess.js";
+export default class ProcessLinkYml extends Log {
 
     constructor(){
         super();
@@ -24,3 +25,4 @@ export default class ProcessYML extends Log {
 
     }
 }
+new ProcessLinkYml();

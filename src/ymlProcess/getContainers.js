@@ -1,6 +1,6 @@
-import YamlVersion from "../abstract/ymlVersion";
+import YamlVersion from "../abstract/ymlVersion.js";
 
-export default class GetContainers extends YamlVersion{
+export default class GetContainers extends YamlVersion {
 
     constructor(context){
         super(context);
@@ -12,7 +12,8 @@ export default class GetContainers extends YamlVersion{
     }
 
     getContainersFunction = () => {
-        let containers = []
+        let containers = [];
+        this.output(this.yml);
         this.yml.containers.forEach((key) => {
             containers.push(key);
         });
