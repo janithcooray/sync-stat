@@ -3,7 +3,10 @@
     "version": "1.0.0",
     "description": "",
     "type": "module",
-    "main": "index.js",
+    "main": "./bin/index.js",
+    "bin": {
+        "syncstat": "./bin/index.js"
+    },
     "repository": {
         "type": "git",
         "url": "git+https://github.com/janithcooray/sync-stat.git"
@@ -15,9 +18,11 @@
     },
     "homepage": "https://sync-stat.nova64.xyz/",
     "dependencies": {
+        "@oclif/core": "^1.9.5",
         "chokidar": "^3.5.3",
         "js-yaml": "^4.1.0",
-        "stdio": "^2.1.1"
+        "stdio": "^2.1.1",
+        "yargs": "^17.5.1"
     },
     "scripts": {
         "test": "node index -m test"

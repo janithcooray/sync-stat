@@ -8,6 +8,7 @@ export default class WatchChange extends Log {
         this.volumePath = volume.to;
         this.fromPath = volume.from;
     }
+    
 
     async startSync() {
         chokidar.watch(this.fromPath,{ignoreInitial: true,usePolling: false}).on('all', (event, path) => {

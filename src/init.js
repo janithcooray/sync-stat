@@ -11,21 +11,23 @@ export default class Init extends Log {
         /**
          * Add init 
          */
-        let ops =  stdio.getopt({
-            'mode': {key: 'm', args: 1, description: ' GCS or Local??',required: true, default : ["run"]},
-        });
+        
+        const args_ = process.argv.slice(2);
 
-        switch (ops.mode) {
+        switch (args_[0]) {
             case "run":
-                new ProcessLinkYml();
+                    new ProcessLinkYml();
                 break;
             case "install":
                     new Convert();
                 break;
             case "test":
-                this.output("OK")
+                this.output("OK");
+            case "help":
+                this.output("OK");
                 break;
             default:
+                this.output(ops)
                 break;
         }
         
