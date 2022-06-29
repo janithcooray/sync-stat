@@ -6,7 +6,8 @@ import yaml from "js-yaml";
 export default class ProcessYML extends Log {
 
     constructor(){
-
+        super();
+        new ProcessYML();
     }
 
     /**
