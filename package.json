@@ -18,7 +18,6 @@
     },
     "homepage": "https://sync-stat.nova64.xyz/",
     "dependencies": {
-        "@oclif/core": "^1.9.5",
         "chokidar": "^3.5.3",
         "js-yaml": "^4.1.0",
         "stdio": "^2.1.1",

@@ -14,26 +14,40 @@ export default class Init extends Log {
         
         const args_ = process.argv.slice(2);
 
+
+
         switch (args_[0]) {
             case "run":
                     new ProcessLinkYml();
                 break;
-            case "install":
+            case "convert":
                     new Convert();
                 break;
             case "test":
                 this.output("OK");
             case "help":
-                this.output("OK");
+                this.help()
+            case "--help":
+                this.help()
+            case "-h":
+                this.help()
+                
                 break;
             default:
-                this.output(ops)
+                this.output("Missing Command!");
+                this.help()
                 break;
         }
-        
-        
-        
     }
+
+help(){
+this.output(
+`COMMANDS: [Option] <ARG1> <ARG2> ..
+    run                 - run sync compose
+    help,-h , --help    - display this help message
+    convert             - convert an existing docker-compose.yml
+    `);
+}
 
     
 }
