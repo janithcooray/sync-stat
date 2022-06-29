@@ -16,7 +16,7 @@ import WatchChange from "./watchChange.js";
         this.yml = new LoadYML();
         this.containers = this.getContainers();
         this.volumes = this.getVolumes(this.containers);
-        this.output(this.volumes);
+        this.output("# of sync ops "+this.volumes.length);
         this.startSync(this.volumes);
      }
 
@@ -33,6 +33,7 @@ import WatchChange from "./watchChange.js";
         });
         return allVolumes;
      }
+
 
      startSync(volumes){
         volumes.forEach(element => {
