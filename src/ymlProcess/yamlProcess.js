@@ -15,16 +15,15 @@ import getVolumes from "./getVolumes.js";
         this.yml = new LoadYML();
         this.containers = this.getContainers();
         this.output(this.containers);
-        this.getVolumes();
+        this.getVolumes(this.containers[0]);
      }
 
      getContainers(){
         return new GetContainers(this);
      }
 
-     getVolumes(){
-        let a = new getVolumes(this).getVolumesFunction(this.containers[0]);
-        this.output(a);
+     getVolumes(container){
+        return new getVolumes(this).getVolumesFunction(this.container);
      }
  
  }
