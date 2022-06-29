@@ -44,7 +44,6 @@ jobs:
           sed -i "s/___VERSION___/${EVENT}/g" package.json
           rm -rf documentation
           rm -rf test
-          rm -f README.md
           rm -rf .github
           rm -rf .git
 
