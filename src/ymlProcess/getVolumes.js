@@ -1,4 +1,4 @@
-import YamlVersion from "../abstract/ymlVersion";
+import YamlVersion from "../abstract/ymlVersion.js";
 
 export default class getVolumes extends YamlVersion{
 
@@ -13,6 +13,15 @@ export default class getVolumes extends YamlVersion{
 
     getVolumesFunction = (container) => {
         let volumes = []
+       
+
+        Object.entries(container).forEach(([key, value]) => {
+            Object.entries(value.volumes).forEach(([id, volume]) => {
+                this.output({id: id, volume});
+            });
+        });
+        
+
         container.forEach((key) => {
             volumes.push(key);
         });
