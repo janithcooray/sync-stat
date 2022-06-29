@@ -1,10 +1,10 @@
-class VolumeInfo {
+export default class VolumeInfo {
     constructor(object){
         this.parse(object);
     }
 
     parse(object){
-        console.log(object);
+        console.log(object.volume.objects);
     }
 
     convert(object){
