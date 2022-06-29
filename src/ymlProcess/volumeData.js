@@ -1,5 +1,13 @@
 class VolumeInfo {
     constructor(object){
+        this.parse(object);
+    }
+
+    parse(object){
+        console.log(object);
+    }
+
+    convert(object){
         this.container = object.container;
         this.volumeId = object.id;
         this.from= object.from,
@@ -9,5 +17,6 @@ class VolumeInfo {
         this.cmd = object.cmd,
         this.ignore = object.ignore,
         this.replace = object.replace
+
     }
 }
