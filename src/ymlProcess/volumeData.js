@@ -1,10 +1,13 @@
 export default class VolumeInfo {
     constructor(object){
-        this.parse(object);
+       return this.parse(object);
     }
 
     parse(object){
-        console.log(object.volume.objects);
+        let volumeInfo = object.volume.volume;
+        volumeInfo.id = object.id; 
+        volumeInfo.container = object.container; 
+        return this.convert(volumeInfo);
     }
 
     convert(object){

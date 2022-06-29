@@ -17,15 +17,11 @@ export default class getVolumes extends YamlVersion{
        
         Object.entries(container).forEach(([key, value]) => {
             Object.entries(value.volumes).forEach(([id, volume]) => {
-                this.output(new VolumeInfo({id: id, volume}))
+                volumes.push(new VolumeInfo({container: key,id: id, volume}));
             });
         });
         
-
-        //container.forEach((key) => {
-        //    volumes.push(key);
-        //});
-        //return volumes;
+        return volumes;
     }
 
 }
