@@ -11,7 +11,7 @@ import GetContainers from "./getContainers.js";
  
      constructor(){
         super();
-        this.yml = LoadYML.getYML();
+        this.yml = new LoadYML();
         this.containers = this.getContainers();
         this.output(this.containers);
      }
