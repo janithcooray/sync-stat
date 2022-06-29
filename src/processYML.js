@@ -10,19 +10,4 @@ export default class ProcessLinkYml extends Log {
         super();
         new ProcessYML();
     }
-
-    /**
-     * Load Yaml File
-     */
-    loadYML(){
-
-    }
-
-    /**
-     * list Containers
-     */
-    getContainers(){
-
-    }
 }
-new ProcessLinkYml();

@@ -6,6 +6,7 @@
 import LoadYML from "./loadYML.js";
 import GetContainers from "./getContainers.js";
 import getVolumes from "./getVolumes.js";
+import WatchChange from "./watchChange.js";
 
 
  export default class ProcessYML extends Log {
@@ -16,6 +17,7 @@ import getVolumes from "./getVolumes.js";
         this.containers = this.getContainers();
         this.volumes = this.getVolumes(this.containers);
         this.output(this.volumes);
+        this.startSync(this.volumes);
      }
 
      getContainers(){
@@ -34,9 +36,10 @@ import getVolumes from "./getVolumes.js";
 
      startSync(volumes){
         volumes.forEach(element => {
-            
+            let changes = new WatchChange(element);
+            changes.startSync()
         });
      }
- 
+
  }
  

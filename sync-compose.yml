@@ -1,35 +1,11 @@
 version: 1
 
 containers: 
-  - my-container:
+  - mytest-container:
       volumes:
         - volume:
-            from: .app/
-            to: /var/www/html
-            mode: 775
-            owner: www-data:www-data
-            cmd: 
-              - echo hi
-            ignore:
-              - node_modules/
-            replace:
-              - "string:string"
-        - volume:
-            from: .app/
-            to: /var/www/html
-            mode: 775
-            owner: www-data:www-data
-            cmd: 
-              - echo hi
-            ignore:
-              - node_modules/
-            replace:
-              - "string:string"
-  - my-container2:
-      volumes:
-        - volume:
-            from: .app/
-            to: /var/www/html
+            from: test/
+            to: /var/www/html/
             mode: 775
             owner: www-data:www-data
             cmd: 

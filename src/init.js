@@ -2,6 +2,7 @@ import fs from 'fs';
 import { default as stdio } from 'stdio';
 import Log from "./abstract/log.js";
 import Convert from './convert.js';
+import ProcessLinkYml from './processYML.js';
 import Sync from './sync.js';
 
 export default class Init extends Log {
@@ -16,7 +17,7 @@ export default class Init extends Log {
 
         switch (ops.mode) {
             case "run":
-                      
+                new ProcessLinkYml();
                 break;
             case "install":
                     new Convert();
