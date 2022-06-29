@@ -13,7 +13,6 @@ export default class GetContainers extends YamlVersion {
 
     getContainersFunction = () => {
         let containers = [];
-        this.output(this.yml);
         this.yml.containers.forEach((key) => {
             containers.push(key);
         });

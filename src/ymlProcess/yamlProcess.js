@@ -19,6 +19,10 @@ import GetContainers from "./getContainers.js";
      getContainers(){
         return new GetContainers(this);
      }
+
+     getVolumes(){
+        
+     }
  
  }
  

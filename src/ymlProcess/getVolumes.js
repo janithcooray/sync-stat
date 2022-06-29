@@ -8,13 +8,13 @@ export default class getVolumes extends YamlVersion{
         this.whenOnIncompatible("Cannot be under version 1, Please Update sync-compose");
         this.checkCompatibility();
 
-        return this.getVolumesFunction();
+        //return this.getVolumesFunction();
     }
 
-    getVolumesFunction = () => {
+    getVolumesFunction = (container) => {
         let volumes = []
-        this.context.containers.forEach((key) => {
-            containers.push(key);
+        container.forEach((key) => {
+            volumes.push(key);
         });
         return volumes;
     }
