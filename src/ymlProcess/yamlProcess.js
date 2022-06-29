@@ -14,16 +14,28 @@ import getVolumes from "./getVolumes.js";
         super();
         this.yml = new LoadYML();
         this.containers = this.getContainers();
-        this.output(this.containers);
-        this.getVolumes(this.containers[0]);
+        this.volumes = this.getVolumes(this.containers);
+        this.output(this.volumes);
      }
 
      getContainers(){
         return new GetContainers(this);
      }
 
-     getVolumes(container){
-        return new getVolumes(this).getVolumesFunction(this.container);
+     getVolumes(containers){
+        let allVolumes = [];
+        containers.forEach(container => {
+            new getVolumes(this).getVolumesFunction(container).forEach(volume => {
+                allVolumes.push(volume) 
+            });
+        });
+        return allVolumes;
+     }
+
+     startSync(volumes){
+        volumes.forEach(element => {
+            
+        });
      }
  
  }
