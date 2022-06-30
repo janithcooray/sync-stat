@@ -1,11 +1,21 @@
-# Docker Volume Sync for Faster Storage Sync
+# Docker Volume Sync for Faster Development on MacOS and Windows
 ---
-## Pleast note that this is a pre-release, functionality is still partial! <br> Wait for a newer update
+## Pleast note that this is a pre-release, functionality is still partial! <br> Wait for a newer update!!
 
 [![CodeQL](https://github.com/janithcooray/sync-stat/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/janithcooray/sync-stat/actions/workflows/codeql-analysis.yml)
 [![Node.js Package](https://github.com/janithcooray/sync-stat/actions/workflows/npm-publish.yml/badge.svg)](https://github.com/janithcooray/sync-stat/actions/workflows/npm-publish.yml)
 ---
-## WTF is this?
+## What it does
+
+sync-stat is a docker volume Bind Mount Alternative that is on par with Bind mounts on Linux Based FSs in terms of performance for MacOS.(Windows NTFS support is comming soon)
+
+Docker with bind mounts can really cause a major performance penalty in MacOS (APPFS) and windows (NTFS)
+
+Windows has WSL so it's not really effected but it would be nice if it would work as fast as bind mounts in linux in NTFS
+
+sync-stat is an NPX CLi toolkit that offers an alternative to Bind Mounts.
+
+sync-stat also offers some other options that docker cp / bind mounts do not offer. such as the ability to set an explicit user group and mode to the directory
 
 ---
 
@@ -16,61 +26,10 @@
 npm install sync-stat
 ```
 
-post installtion - add script to package.json
-
-```sh
-node node_modules/sync-stat/index -m install
-```
-
 ## Configure - create `sync-compose.json`
 
 create a JSON file named `sync-compose,json` at the root directory of your project
 
-
-### Basic config
-
-sync every change from ./app/* to container-name:/var/www/html 
-
-```json
-{
-    "containers":{
-        "container-name":{
-            "/path/to/container":"app"
-        }
-    }
-}
-```
-
-
-### Multiple Containers
-
-to add multiple containers, add the 2nd container name after 1st container
-
-```json
-{
-    "containers":{
-        "container-name":{
-            "/path/to/container":"app"
-        },
-        "another-container-name":{
-            "/another/path":"same/path"
-        },
-    }
-}
-```
-
-### Multiple Volumes per Container
-
-```json
-{
-    "containers":{
-        "container-name":{
-            "/path/to/container":"app",
-            "/another/path/to/container":"another/folder"
-        }
-    }
-}
-```
 
 ## Example
 
@@ -112,5 +71,5 @@ make sure to name the container with matching names defined in the sync-compose.
 ### Start Sync
 
 ```sh
-npm run sync-stat
+npx sync-stat run
 ```
