@@ -14,14 +14,14 @@ export default class WatchChange extends Log {
     async startSync() {
         chokidar.watch(this.fromPath,{ignoreInitial: true,usePolling: false}).on('all', (event, path) => {
             if (event=="change" || event == "add") {
-                console.log('copy '+path + " to " + this.containerName +":"+ this.dockerpath(path));
                 try {
                   child_process.execSync('docker exec ' + this.containerName +' mkdir -p '+this.dockerpath(this.getPath(path)));
                   child_process.execSync('docker cp "'+path+'" ' + this.containerName +':'+this.dockerpath(path));
                   child_process.execSync('docker exec ' + this.containerName +' chown -R '+this.owner+' '+this.dockerpath(this.getPath(path)));
                   child_process.execSync('docker exec ' + this.containerName +' chmod -R '+this.mode+' '+this.dockerpath(this.getPath(path)));
+                  console.log('✅ copied '+path + " to " + this.containerName +":"+ this.dockerpath(path));
                 } catch (error) {
-                    console.log(this.getPath(path));
+                    console.log("❌ unable to copy"+this.dockerpath(this.getPath(path)));
                 }
             }
             if (event=="addDir") {
