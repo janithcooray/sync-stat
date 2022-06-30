@@ -16,7 +16,7 @@ import WatchChange from "./watchChange.js";
         this.yml = new LoadYML();
         this.containers = this.getContainers();
         this.volumes = this.getVolumes(this.containers);
-        this.output("# of sync ops "+this.volumes.length);
+        this.output("🚀 no. of sync ops "+this.volumes.length);
         this.startSync(this.volumes);
      }
 
@@ -38,7 +38,7 @@ import WatchChange from "./watchChange.js";
      startSync(volumes){
         volumes.forEach(element => {
             let changes = new WatchChange(element);
-            this.output(element.container+" will be synced on "+element.from + ":"+element.to )
+            this.output("🚀 "+element.container+" will be synced on "+element.from + ":"+element.to )
             changes.startSync()
         });
      }
