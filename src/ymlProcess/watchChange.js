@@ -7,6 +7,7 @@ export default class WatchChange extends Log {
         this.containerName = volume.container;
         this.volumePath = volume.to;
         this.fromPath = volume.from;
+        this.owner = volume.owner;
     }
     
 
@@ -17,6 +18,8 @@ export default class WatchChange extends Log {
                 try {
                   child_process.execSync('docker exec ' + this.containerName +' mkdir -p '+this.dockerpath(this.getPath(path)));
                   child_process.execSync('docker cp "'+path+'" ' + this.containerName +':'+this.dockerpath(path));
+                  child_process.execSync('docker exec ' + this.containerName +' chown -R '+this.owner+' '+this.dockerpath(this.getPath(path)));
+                  child_process.execSync('docker exec ' + this.containerName +' chmod -R '+this.mode+' '+this.dockerpath(this.getPath(path)));
                 } catch (error) {
                     console.log(this.getPath(path));
                 }
