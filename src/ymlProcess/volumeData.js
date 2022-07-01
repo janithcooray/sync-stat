@@ -19,7 +19,7 @@ export default class VolumeInfo {
         this.owner = object.owner,
         this.cmd = object.cmd,
         this.ignore = object.ignore,
-        this.replace = object.replace
-
+        this.replace = object.replace,
+        this.profile = object.profile
     }
 }

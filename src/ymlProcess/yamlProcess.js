@@ -11,11 +11,12 @@ import WatchChange from "./watchChange.js";
 
  export default class ProcessYML extends Log {
  
-     constructor(){
+     constructor(arg){
         super();
         this.yml = new LoadYML();
         this.containers = this.getContainers();
         this.volumes = this.getVolumes(this.containers);
+        this.profile = arg[1];
         this.output("🚀 no. of sync ops "+this.volumes.length);
         this.startSync(this.volumes);
      }
@@ -34,12 +35,25 @@ import WatchChange from "./watchChange.js";
         return allVolumes;
      }
 
+     isInProfile(profile){
+        if (this.profile != null) {
+            if (profile == this.profile || profile== null ) {
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+        return true;
+     }
 
      startSync(volumes){
         volumes.forEach(element => {
-            let changes = new WatchChange(element);
-            this.output("🚀 "+element.container+" will be synced on "+element.from + ":"+element.to )
-            changes.startSync()
+            if (this.isInProfile(element.profile)) {
+                let changes = new WatchChange(element);
+                this.output("🚀 "+element.container+" will be synced on "+element.from + ":"+element.to )
+                changes.up()
+            }
         });
      }
 

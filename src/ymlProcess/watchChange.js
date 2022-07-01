@@ -8,8 +8,11 @@ export default class WatchChange extends Log {
         this.volumePath = volume.to;
         this.fromPath = volume.from;
         this.owner = volume.owner;
+        this.cmd = volume.cmd;
+        this.mode = volume.mode;
     }
     
+
 
     async startSync() {
         chokidar.watch(this.fromPath,{ignoreInitial: true,usePolling: false}).on('all', (event, path) => {
@@ -17,8 +20,8 @@ export default class WatchChange extends Log {
                 try {
                   child_process.execSync('docker exec ' + this.containerName +' mkdir -p '+this.dockerpath(this.getPath(path)));
                   child_process.execSync('docker cp "'+path+'" ' + this.containerName +':'+this.dockerpath(path));
-                  child_process.execSync('docker exec ' + this.containerName +' chown -R '+this.owner+' '+this.dockerpath(this.getPath(path)));
-                  child_process.execSync('docker exec ' + this.containerName +' chmod -R '+this.mode+' '+this.dockerpath(this.getPath(path)));
+                  //child_process.execSync('docker exec ' + this.containerName +' chown -R '+this.owner+' '+this.dockerpath(this.getPath(path)));
+                  //child_process.execSync('docker exec ' + this.containerName +' chmod -R '+this.mode+' '+this.dockerpath(this.getPath(path)));
                   console.log('✅ copied '+path + " to " + this.containerName +":"+ this.dockerpath(path));
                 } catch (error) {
                     console.log("❌ unable to copy"+this.dockerpath(this.getPath(path)));
@@ -39,9 +42,39 @@ export default class WatchChange extends Log {
           });
     }
 
+    up(){
+      this.output("🚀 Copying Source to "+ this.containerName);
+      child_process.execSync('docker cp "'+this.dcpeParse(this.fromPath)+'" ' + this.containerName +':'+this.volumePath);
+      console.log('✅ Ok');
+
+      this.output("🚀 Changing Destination Owner for "+ this.containerName);
+      child_process.execSync('docker exec ' + this.containerName +' chown -R '+this.owner+' '+this.volumePath);
+      console.log('✅ Ok');
+
+      this.output("🚀 Changing Destination Mode for "+ this.containerName);
+      child_process.execSync('docker exec ' + this.containerName +' chmod -R '+this.mode+' '+this.volumePath);
+      console.log('✅ Ok');
+
+      this.output("✅ Sync Ready for "+this.containerName);
+
+      if(this.cmd != null){
+        this.cmd.forEach(element => {
+          this.output("🚀 "+ this.containerName+ " "+element);
+          child_process.execSync('docker exec ' + this.containerName +" "+ element);
+          console.log('✅ Ok');
+        });
+      }
+
+      this.startSync();
+    }
+
     dockerpath(params) {
         //this.output(params)
         return '"'+params.replace(this.fromPath,this.volumePath)+'"';
+    }
+
+    dcpeParse(path){
+      return path.endsWith("/")?path+".":path;
     }
     
     getPath(params) {
