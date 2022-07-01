@@ -21,20 +21,36 @@ containers:
             mode: 775
             owner: www-data:www-data
             cmd: 
-              - echo hi
+              - echo local
             ignore:
               - node_modules/
             replace:
               - "string:string"
         - volume:
             profile: staging
-            from: test/config.php
-            to: /var/www/html/config.php
+            from: test/test/sample.php
+            to: /var/www/html/sample.php
             mode: 775
             owner: www-data:www-data
             cmd: 
-              - echo hi
+              - echo staging
             ignore:
               - node_modules/
             replace:
               - "string:string"
+
+database:
+  driver: mysql
+  hosted:
+    database_user: 
+    database_name:
+    database_pass:
+    host: 
+    post:
+  local:
+    database_user: 
+    database_name:
+    database_pass:
+    root_password:
+    host: 
+    post: 

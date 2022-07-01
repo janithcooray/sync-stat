@@ -44,6 +44,7 @@ this.output(
 `Commands: [Option] <ARG1> <ARG2> ...
 
     run                 - run sync compose
+    db                  - export db copy from server and import to local
     help,-h , --help    - display this help message
     convert             - convert an existing docker-compose.yml
     version             - Display Version
