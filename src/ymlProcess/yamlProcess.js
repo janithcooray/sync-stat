@@ -39,7 +39,7 @@ import WatchChange from "./watchChange.js";
         volumes.forEach(element => {
             let changes = new WatchChange(element);
             this.output("🚀 "+element.container+" will be synced on "+element.from + ":"+element.to )
-            changes.startSync()
+            changes.up()
         });
      }
 
