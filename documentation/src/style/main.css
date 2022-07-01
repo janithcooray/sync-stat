@@ -2,47 +2,50 @@
 @tailwind components;
 @tailwind utilities;
 
-html,body{
-    margin: 0;
-    padding: 0;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 /* The side navigation menu */
 .sidebar {
-    margin: 0;
-    padding: 0;
-    width: 250px;
-    background-color: #FFF;
-    position: fixed;
-    height: 100%;
-    top: 0;
-    overflow: auto;
-  }
-  
-  
-  /* Page content. The value of the margin-left property should match the value of the sidebar's width property */
-  div.content {
-    margin-left: 250px;
-    padding: 1px 16px;
-    min-height: 100vh;
-  }
-  
-  /* On screens that are less than 700px wide, make the sidebar into a topbar */
-  @media screen and (max-width: 700px) {
-    .sidebar {
-      width: 100%;
-      height: auto;
-      position: relative;
-    }
-    .sidebar a {float: left;}
-    div.content {margin-left: 0;}
-  }
-  
-  /* On screens that are less than 400px, display the bar vertically, instead of horizontally */
-  @media screen and (max-width: 400px) {
-    .sidebar a {
-      text-align: center;
-      float: none;
-    }
-  }
+  margin: 0;
+  padding: 0;
+  width: 250px;
+  background-color: #fff;
+  position: fixed;
+  height: 100%;
+  top: 0;
+  overflow: auto;
+}
 
+/* Page content. The value of the margin-left property should match the value of the sidebar's width property */
+div.content {
+  margin-left: 250px;
+  padding: 1px 16px;
+  min-height: 100vh;
+}
+
+/* On screens that are less than 700px wide, make the sidebar into a topbar */
+@media screen and (max-width: 700px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+  .sidebar a {
+    float: left;
+  }
+  div.content {
+    margin-left: 0;
+  }
+}
+
+/* On screens that are less than 400px, display the bar vertically, instead of horizontally */
+@media screen and (max-width: 400px) {
+  .sidebar a {
+    text-align: center;
+    float: none;
+  }
+}

@@ -1,34 +1,39 @@
 {
-    "name": "sync-stat",
-    "version": "___VERSION___",
-    "description": "",
-    "type": "module",
-    "main": "./bin/index.js",
-    "bin": {
-        "syncstat": "./bin/index.js"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/janithcooray/sync-stat.git"
-    },
-    "author": "janithcooray",
-    "license": "ISC",
-    "bugs": {
-        "url": "https://github.com/janithcooray/sync-stat/issues"
-    },
-    "homepage": "https://sync-stat.nova64.xyz/",
-    "dependencies": {
-        "chokidar": "^3.5.3",
-        "js-yaml": "^4.1.0"
-    },
-    "scripts": {
-        "test": "node bin/index.js -h"
-    },
-    "keywords": [
-        "docker volumes",
-        "docker compose mount",
-        "docker mount speed",
-        "sync-stat",
-        "sync stat"
-    ]
+	"name": "sync-stat",
+	"version": "___VERSION___",
+	"description": "",
+	"type": "module",
+	"main": "./bin/index.js",
+	"bin": {
+		"syncstat": "./bin/index.js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/janithcooray/sync-stat.git"
+	},
+	"author": "janithcooray",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/janithcooray/sync-stat/issues"
+	},
+	"homepage": "https://sync-stat.nova64.xyz/",
+	"dependencies": {
+		"chokidar": "^3.5.3",
+		"js-yaml": "^4.1.0"
+	},
+	"scripts": {
+		"test": "node bin/index.js -h",
+		"prepare": "husky install",
+		"format": "npx prettier --write ."
+	},
+	"keywords": [
+		"docker volumes",
+		"docker compose mount",
+		"docker mount speed",
+		"sync-stat",
+		"sync stat"
+	],
+	"devDependencies": {
+		"husky": "^8.0.0"
+	}
 }

@@ -1,13 +1,12 @@
 /**
  * Process YML file
  */
-import Log from "./abstract/log.js";
-import yaml from "js-yaml";
-import ProcessYML from "./ymlProcess/yamlProcess.js";
+import Log from './abstract/log.js';
+import yaml from 'js-yaml';
+import ProcessYML from './ymlProcess/yamlProcess.js';
 export default class ProcessLinkYml extends Log {
-
-    constructor(){
-        super();
-        new ProcessYML();
-    }
+	constructor() {
+		super();
+		new ProcessYML();
+	}
 }

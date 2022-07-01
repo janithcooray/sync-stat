@@ -5,7 +5,7 @@ import Util from './util.js';
  * @class Log
  */
 export default class Log extends Util {
-    output(arg){
-        console.log(arg);
-    }
+	output(arg) {
+		console.log(arg);
+	}
 }
