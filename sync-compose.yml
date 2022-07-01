@@ -14,3 +14,27 @@ containers:
               - node_modules/
             replace:
               - "string:string"
+        - volume:
+            profile: local
+            from: test/config.php
+            to: /var/www/html/config.php
+            mode: 775
+            owner: www-data:www-data
+            cmd: 
+              - echo hi
+            ignore:
+              - node_modules/
+            replace:
+              - "string:string"
+        - volume:
+            profile: staging
+            from: test/config.php
+            to: /var/www/html/config.php
+            mode: 775
+            owner: www-data:www-data
+            cmd: 
+              - echo hi
+            ignore:
+              - node_modules/
+            replace:
+              - "string:string"

@@ -15,7 +15,7 @@ export default class Init extends Log {
 
         switch (args_[0]) {
             case "run":
-                    new ProcessLinkYml();
+                    new ProcessLinkYml(args_);
                 break;
             case "convert":
                     new Convert();

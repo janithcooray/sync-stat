@@ -6,8 +6,8 @@ import yaml from "js-yaml";
 import ProcessYML from "./ymlProcess/yamlProcess.js";
 export default class ProcessLinkYml extends Log {
 
-    constructor(){
+    constructor(arg){
         super();
-        new ProcessYML();
+        new ProcessYML(arg);
     }
 }
