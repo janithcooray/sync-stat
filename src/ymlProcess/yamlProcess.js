@@ -16,16 +16,22 @@ export default class ProcessYML extends Log {
 		this.volumes = this.getVolumes(this.containers);
 		this.profile = arg[1];
 		this.output('🚀 no. of sync ops ' + this.volumes.length);
-		/***
-		 * commet this for debugging, undo when done
-		 */
 		this.startSync(this.volumes);
 	}
 
+	/**
+	 * Get Containers
+	 * @returns Containers Arrat
+	 */
 	getContainers() {
 		return new GetContainers(this);
 	}
 
+	/**
+	 *
+	 * @param {Containers} containers
+	 * @returns volumes
+	 */
 	getVolumes(containers) {
 		let allVolumes = [];
 		containers.forEach(container => {

@@ -12,6 +12,11 @@ export default class Init extends Log {
 		 * Add init
 		 */
 
+		/**
+		 *
+		 * <TODO> refactor later
+		 */
+
 		const args_ = process.argv.slice(2);
 
 		switch (args_[0]) {
