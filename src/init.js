@@ -3,6 +3,7 @@ import Log from "./abstract/log.js";
 import Convert from './convert.js';
 import ProcessLinkYml from './processYML.js';
 import Sync from './sync.js';
+import dbDriver from './ymlProcess/dbDriver.js';
 
 export default class Init extends Log {
     constructor () {
@@ -22,6 +23,8 @@ export default class Init extends Log {
                 break;
             case "test":
                 this.output("OK");
+            case "db":
+                new dbDriver(args_);
             case "help":
                 this.help()
             case "--help":

@@ -1,13 +1,11 @@
 import YamlVersion from "../abstract/ymlVersion.js";
 import MysqlDriver from "./mysqlDriver.js";
 
-export default class dbDriver extends YamlVersion {
+export default class dbDriver extends Log {
 
-    constructor(context){
-        super(context)
-        this.setMinVersion(1);
-        this.whenOnIncompatible("Cannot be under version 1, Please Update sync-compose");
-        this.checkCompatibility();
+    constructor(arg){
+        super()
+        this.yml = new LoadYML();
 
         return this.methodDriver();
     }
