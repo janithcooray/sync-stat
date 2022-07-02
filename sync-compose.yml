@@ -1,6 +1,6 @@
 version: 1
 
-containers: 
+containers:
   - mytest-container:
       volumes:
         - volume:
@@ -8,36 +8,36 @@ containers:
             to: /var/www/html/
             mode: 775
             owner: www-data:www-data
-            cmd: 
+            cmd:
               - echo hi
             ignore:
               - node_modules/
             replace:
-              - "string:string"
+              - 'string:string'
         - volume:
             profile: local
             from: test/config.php
             to: /var/www/html/config.php
             mode: 775
             owner: www-data:www-data
-            cmd: 
+            cmd:
               - echo local
             ignore:
               - node_modules/
             replace:
-              - "string:string"
+              - 'string:string'
         - volume:
             profile: staging
             from: test/test/sample.php
             to: /var/www/html/sample.php
             mode: 775
             owner: www-data:www-data
-            cmd: 
+            cmd:
               - echo staging
             ignore:
               - node_modules/
             replace:
-              - "string:string"
+              - 'string:string'
       post_start:
         - echo "install"
 
@@ -47,19 +47,19 @@ database:
   method: export # [ export | dump ]
   file: /path/to/dump.sql #[ ./relative | /absolute ]/path/to/dump.sql
   server:
-    database_user: 
-    database_name:
-    database_pass:
-    host:
-    port: 
+    database_user: user
+    database_name: dbname
+    database_pass: pass
+    host: server.name
+    port: 3306
   local:
-    drop: # drop db if it exists
-    database_user: 
-    database_name:
-    database_pass:
-    root_password:
-    host:
-    port: 
+    provision: true # drop db if it exists, create if not exist. needs root password
+    database_user: user
+    database_name: dbname
+    database_pass: pass
+    root_password: root_password # only used for provision function
+    host: localhost
+    port: 3306
 
 cloud_storage:
   profile: local

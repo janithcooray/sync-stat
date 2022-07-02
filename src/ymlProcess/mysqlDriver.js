@@ -1,45 +1,114 @@
-import YamlVersion from "../abstract/ymlVersion.js";
+import YamlVersion from '../abstract/ymlVersion.js';
 import mysql from 'mysql';
+import mysqldump from 'mysqldump';
+
+import Importer from 'mysql-import';
 
 export default class MysqlDriver extends YamlVersion {
+	constructor(context) {
+		super(context);
+		this.setMinVersion(1);
+		this.whenOnIncompatible(
+			'Cannot be under version 1, Please Update sync-compose'
+		);
+		this.checkCompatibility();
+		//return true;
+	}
 
-    constructor(context){
-        super(context)
-        this.setMinVersion(1);
-        this.whenOnIncompatible("Cannot be under version 1, Please Update sync-compose");
-        this.checkCompatibility();
-        //return true;
-    }
+	start() {
+		return true;
+	}
 
-    start(){
-        return true;
-    }
+	method() {
+		if (this.yml.database != null) {
+			let mysql_method = this.yml.database.method;
+			switch (mysql_method) {
+				case 'dump':
+					this.output('Starting Dump');
+					this.useFromServer();
+					this.importFromFile('./dump.sql');
+					break;
+				case 'export':
+					this.output('Starting Export');
+					this.importFromFile(this.yml.database.file);
+					break;
 
-    method(){
-        if ( this.yml.database != null) {
-            let mysql_method = this.yml
-            return true;
-        } 
-        return true;
-    }
+				default:
+					this.output('unknow db export method');
+					process.exitCode(0);
+					break;
+			}
+			return true;
+		}
+		return true;
+	}
 
-    /**
-     * Export a copy from sever directly
-     * @returns true always
-     */
-    useFromServer(){
+	/*
+    profile: staging
+    method: [ export | dump ]
+    file: [ ./relative | /absolute ]/path/to/dump.sql
+    server:
+        database_user: 
+        database_name:
+        database_pass:
+        host:
+        port: 
+    local:
+        database_user: 
+        database_name:
+        database_pass:
+        root_password:
+        host:
+        port: 
+    */
+	/**
+	 * Export a copy from sever directly
+	 * @returns true always
+	 */
+	useFromServer() {
+		let server = this.yml.database.server;
+		mysqldump({
+			connection: {
+				host: server.host,
+				user: server.database_user,
+				password: server.database_pass,
+				database: server.database_name,
+			},
+			dumpToFile: './dump.sql',
+		});
 
-        return true;
-    }
+		return true;
+	}
 
+	/**
+	 * Import From data from a sql copy
+	 * @returns true
+	 */
+	importFromFile(file) {
+		let server = this.yml.database.local;
 
-    /**
-     * Import From data from a sql copy
-     * @returns true 
-     */
-    useDump(){
+		const host = server.host;
+		const user = server.database_name;
+		const password = server.database_pass;
+		const database = server.database_name;
 
-        return true;
-    }
+		let importer = new Importer({ host, user, password, database });
 
+		importer.onProgress(progress => {
+			var percent =
+				Math.floor((progress.bytes_processed / progress.total_bytes) * 10000) /
+				100;
+			console.log(`${percent}% Completed`);
+		});
+
+		importer
+			.import(file)
+			.then(() => {
+				var files_imported = importer.getImported();
+				console.log(`${files_imported.length} SQL file(s) imported.`);
+			})
+			.catch(err => {
+				console.error(err);
+			});
+	}
 }
