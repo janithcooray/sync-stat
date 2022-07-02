@@ -1,12 +1,21 @@
 /**
  *
- * Watch Change object
+ * Watch Change Class
+ *
+ * Heart of sync stat
+ *
+ * Uses Chokidar to detect file changes, must implement a different method here,
+ *
  *
  */
 import Log from '../abstract/log.js';
 import chokidar from 'chokidar';
 import child_process from 'child_process';
 export default class WatchChange extends Log {
+	/**
+	 * Init Watch Change
+	 * @param {VolumesData} volume
+	 */
 	constructor(volume) {
 		super();
 		this.containerName = volume.container;
@@ -17,6 +26,9 @@ export default class WatchChange extends Log {
 		this.mode = volume.mode;
 	}
 
+	/**
+	 * Start Syncing files
+	 */
 	async startSync() {
 		chokidar
 			.watch(this.fromPath, { ignoreInitial: true, usePolling: false })
@@ -85,6 +97,9 @@ export default class WatchChange extends Log {
 			});
 	}
 
+	/**
+	 * Start watch by running initial Commands
+	 */
 	up() {
 		this.output('🚀 Copying Source to ' + this.containerName);
 		child_process.execSync(
@@ -134,15 +149,30 @@ export default class WatchChange extends Log {
 		this.startSync();
 	}
 
+	/**
+	 *
+	 * @param {Changes Filed path} params
+	 * @returns Docker equivilent path
+	 */
 	dockerpath(params) {
 		//this.output(params)
 		return '"' + params.replace(this.fromPath, this.volumePath) + '"';
 	}
 
+	/**
+	 *
+	 * @param {relative} path
+	 * @returns docker path
+	 */
 	dcpeParse(path) {
 		return path.endsWith('/') ? path + '.' : path;
 	}
 
+	/**
+	 *
+	 * @param {gets directory of a file from local} params
+	 * @returns docker directory
+	 */
 	getPath(params) {
 		let pieces = params.split('/');
 		pieces.pop();
