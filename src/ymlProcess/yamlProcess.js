@@ -42,6 +42,10 @@ export default class ProcessYML extends Log {
 		return allVolumes;
 	}
 
+	/**
+	 * Start Sync proccess
+	 * @param {Container Volumes} volumes
+	 */
 	startSync(volumes) {
 		volumes.forEach(element => {
 			if (this.isInProfile(element.profile)) {

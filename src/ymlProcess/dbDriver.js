@@ -3,14 +3,22 @@ import LoadYML from './loadYML.js';
 import MysqlDriver from './mysqlDriver.js';
 
 export default class DbDriver extends Log {
+	/**
+	 * Start DB process
+	 *
+	 * @param {CLI argentents} arg
+	 */
 	constructor(arg) {
 		super();
 		this.profile = arg[1];
 		this.yml = new LoadYML();
-
 		this.methodDriver();
 	}
 
+	/**
+	 * Pass proccess to relevant driver
+	 * @returns true
+	 */
 	methodDriver() {
 		if (this.yml.database != null) {
 			let driver = this.yml.database.driver;
