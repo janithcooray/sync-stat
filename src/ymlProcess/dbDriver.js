@@ -1,3 +1,10 @@
+/**
+ * dbDriver
+ *
+ * Handles DB functions in YAML
+ * Author: janithcooray
+ *
+ */
 import Log from '../abstract/log.js';
 import LoadYML from './loadYML.js';
 import MysqlDriver from './mysqlDriver.js';

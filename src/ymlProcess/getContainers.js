@@ -1,3 +1,11 @@
+/**
+ *
+ * Get Containers function
+ *
+ * Returns the containers defined in YAML
+ * Aurthor: janithcooray
+ *
+ */
 import YamlVersion from '../abstract/ymlVersion.js';
 
 export default class GetContainers extends YamlVersion {
