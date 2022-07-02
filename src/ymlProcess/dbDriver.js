@@ -12,7 +12,7 @@ export default class dbDriver extends YamlVersion {
 
     methodDriver(){
         if ( this.yml.database != null) {
-            let mysql_method = this.yml
+            let driver = this.yml.database.driver
             
         }
     }

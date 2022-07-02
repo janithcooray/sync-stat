@@ -18,6 +18,9 @@ import WatchChange from "./watchChange.js";
         this.volumes = this.getVolumes(this.containers);
         this.profile = arg[1];
         this.output("🚀 no. of sync ops "+this.volumes.length);
+       /***
+        * commet this for debugging, undo when done
+        */
         this.startSync(this.volumes);
      }
 
