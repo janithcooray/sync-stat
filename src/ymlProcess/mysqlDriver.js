@@ -7,7 +7,7 @@ export default class MysqlDriver extends YamlVersion {
         this.setMinVersion(1);
         this.whenOnIncompatible("Cannot be under version 1, Please Update sync-compose");
         this.checkCompatibility();
-
+        return this.method();
     }
 
     method(){
@@ -15,6 +15,25 @@ export default class MysqlDriver extends YamlVersion {
             let mysql_method = this.yml
 
         }
+    }
+
+    /**
+     * Export a copy from sever directly
+     * @returns true always
+     */
+    useFromServer(){
+
+        return true;
+    }
+
+
+    /**
+     * Import From data from a sql copy
+     * @returns true 
+     */
+    useDump(){
+        
+        return true;
     }
 
 }
