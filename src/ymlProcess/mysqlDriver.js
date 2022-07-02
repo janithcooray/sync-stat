@@ -1,10 +1,20 @@
-import YamlVersion from '../abstract/ymlVersion.js';
-import mysql from 'mysql';
-import mysqldump from 'mysqldump';
+/**
+ *
+ * MysqlDriver
+ *
+ * Handles All functions related to MYSQL DB
+ *
+ */
 
+import YamlVersion from '../abstract/ymlVersion.js';
+import mysqldump from 'mysqldump';
 import Importer from 'mysql-import';
 
 export default class MysqlDriver extends YamlVersion {
+	/**
+	 * Mysql Constuction
+	 * @param {Parent} context
+	 */
 	constructor(context) {
 		super(context);
 		this.setMinVersion(1);
@@ -12,13 +22,20 @@ export default class MysqlDriver extends YamlVersion {
 			'Cannot be under version 1, Please Update sync-compose'
 		);
 		this.checkCompatibility();
-		//return true;
 	}
 
+	/**
+	 *
+	 * @returns Start method
+	 */
 	start() {
-		return true;
+		return method();
 	}
 
+	/**
+	 * Init Proccess of MysqlDriver
+	 * @returns true
+	 */
 	method() {
 		if (this.yml.database != null) {
 			let mysql_method = this.yml.database.method;
@@ -43,24 +60,6 @@ export default class MysqlDriver extends YamlVersion {
 		return true;
 	}
 
-	/*
-    profile: staging
-    method: [ export | dump ]
-    file: [ ./relative | /absolute ]/path/to/dump.sql
-    server:
-        database_user: 
-        database_name:
-        database_pass:
-        host:
-        port: 
-    local:
-        database_user: 
-        database_name:
-        database_pass:
-        root_password:
-        host:
-        port: 
-    */
 	/**
 	 * Export a copy from sever directly
 	 * @returns true always
