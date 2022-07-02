@@ -2,15 +2,16 @@
  * Volume Data Class
  *
  */
-import Log from '../abstract/log.js';
+//import Log from '../abstract/log.js';
 
-export default class VolumeInfo extends Log {
+export default class VolumeInfo {
 	/**
 	 *
 	 * @param {YML object} object
 	 * @returns JSON Object
 	 */
 	constructor(object) {
+		//super();
 		return this.parse(object);
 	}
 
