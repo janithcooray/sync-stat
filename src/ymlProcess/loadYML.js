@@ -1,3 +1,12 @@
+/**
+ * LoadYAML
+ *
+ * Converts YAML into JSON object
+ *
+ * Author: janithcooray
+ *
+ */
+
 import yaml from 'js-yaml';
 import fs from 'fs';
 import Log from '../abstract/log.js';
