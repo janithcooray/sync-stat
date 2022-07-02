@@ -44,8 +44,8 @@ containers:
 database:
   driver: mysql
   profile: staging
-  method: [ export | dump ]
-  file: [ ./relative | /absolute ]/path/to/dump.sql
+  method: export # [ export | dump ]
+  file: /path/to/dump.sql #[ ./relative | /absolute ]/path/to/dump.sql
   server:
     database_user: 
     database_name:

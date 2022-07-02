@@ -38,18 +38,6 @@ import WatchChange from "./watchChange.js";
         return allVolumes;
      }
 
-     isInProfile(profile){
-        if (this.profile != null) {
-            if (profile == this.profile || profile== null ) {
-                return true;
-            }
-            else{
-                return false;
-            }
-        }
-        return true;
-     }
-
      startSync(volumes){
         volumes.forEach(element => {
             if (this.isInProfile(element.profile)) {
