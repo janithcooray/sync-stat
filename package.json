@@ -19,7 +19,8 @@
     "homepage": "https://sync-stat.nova64.xyz/",
     "dependencies": {
         "chokidar": "^3.5.3",
-        "js-yaml": "^4.1.0"
+        "js-yaml": "^4.1.0",
+        "mysql": "^2.18.1"
     },
     "scripts": {
         "test": "node bin/index.js -h"

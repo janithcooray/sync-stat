@@ -1,8 +1,8 @@
 /**
  * Process YML file
  */
- import Log from "../abstract/log.js";
- import yaml from "js-yaml";
+import Log from "../abstract/log.js";
+import yaml from "js-yaml";
 import LoadYML from "./loadYML.js";
 import GetContainers from "./getContainers.js";
 import getVolumes from "./getVolumes.js";
@@ -18,6 +18,9 @@ import WatchChange from "./watchChange.js";
         this.volumes = this.getVolumes(this.containers);
         this.profile = arg[1];
         this.output("🚀 no. of sync ops "+this.volumes.length);
+       /***
+        * commet this for debugging, undo when done
+        */
         this.startSync(this.volumes);
      }
 
@@ -33,18 +36,6 @@ import WatchChange from "./watchChange.js";
             });
         });
         return allVolumes;
-     }
-
-     isInProfile(profile){
-        if (this.profile != null) {
-            if (profile == this.profile || profile== null ) {
-                return true;
-            }
-            else{
-                return false;
-            }
-        }
-        return true;
      }
 
      startSync(volumes){
