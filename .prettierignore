@@ -1,0 +1,9 @@
+# All php files
+*.php
+
+# Dependencies
+vendor/
+node_modules/
+
+# Log files
+*.cache

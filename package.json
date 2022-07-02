@@ -23,8 +23,13 @@
         "mysql": "^2.18.1"
     },
     "scripts": {
-        "test": "node bin/index.js -h"
+        "test": "node bin/index.js -h",
+        "prepare": "husky install",
+    		"format": "npx prettier --write ."
     },
+    "devDependencies": {
+		    "husky": "^8.0.0"
+	  }
     "keywords": [
         "docker volumes",
         "docker compose mount",

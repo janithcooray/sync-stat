@@ -3,7 +3,6 @@
  */
 
 export default class Util {
-
     getProjectRoot = () => "./";
     //getProjectRoot = () => process.env.PWD;
 
