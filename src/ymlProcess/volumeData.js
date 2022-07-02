@@ -1,8 +1,24 @@
-export default class VolumeInfo {
+/**
+ * Volume Data Class
+ *
+ */
+import Log from '../abstract/log';
+
+export default class VolumeInfo extends Log {
+	/**
+	 *
+	 * @param {YML object} object
+	 * @returns JSON Object
+	 */
 	constructor(object) {
 		return this.parse(object);
 	}
 
+	/**
+	 *
+	 * @param {YAML} object
+	 * @returns Convert Function
+	 */
 	parse(object) {
 		let volumeInfo = object.volume.volume;
 		volumeInfo.id = object.id;
@@ -10,6 +26,10 @@ export default class VolumeInfo {
 		return this.convert(volumeInfo);
 	}
 
+	/**
+	 * Sets Data to Context
+	 * @param {Converted JSON} object
+	 */
 	convert(object) {
 		this.container = object.container;
 		this.volumeId = object.id;

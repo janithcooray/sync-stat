@@ -1,3 +1,8 @@
+/**
+ *
+ * Watch Change object
+ *
+ */
 import Log from '../abstract/log.js';
 import chokidar from 'chokidar';
 import child_process from 'child_process';
