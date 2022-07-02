@@ -103,5 +103,5 @@ make sure to name the container with matching names defined in the sync-compose.
 Once Containers are online run the following in the root directory
 
 ```sh
-npx sync-stat run
+npx syncstat run
 ```

@@ -1,6 +1,6 @@
 version: 1
 
-containers:
+containers: 
   - mytest-container:
       volumes:
         - volume:
@@ -8,9 +8,61 @@ containers:
             to: /var/www/html/
             mode: 775
             owner: www-data:www-data
-            cmd:
+            cmd: 
               - echo hi
             ignore:
               - node_modules/
             replace:
-              - 'string:string'
+              - "string:string"
+        - volume:
+            profile: local
+            from: test/config.php
+            to: /var/www/html/config.php
+            mode: 775
+            owner: www-data:www-data
+            cmd: 
+              - echo local
+            ignore:
+              - node_modules/
+            replace:
+              - "string:string"
+        - volume:
+            profile: staging
+            from: test/test/sample.php
+            to: /var/www/html/sample.php
+            mode: 775
+            owner: www-data:www-data
+            cmd: 
+              - echo staging
+            ignore:
+              - node_modules/
+            replace:
+              - "string:string"
+      post_start:
+        - echo "install"
+
+database:
+  driver: mysql
+  profile: staging
+  method: export # [ export | dump ]
+  file: /path/to/dump.sql #[ ./relative | /absolute ]/path/to/dump.sql
+  server:
+    database_user: 
+    database_name:
+    database_pass:
+    host:
+    port: 
+  local:
+    drop: # drop db if it exists
+    database_user: 
+    database_name:
+    database_pass:
+    root_password:
+    host:
+    port: 
+
+cloud_storage:
+  profile: local
+  driver: GOOGLE_BUCKET_STORAGE
+  from: https://somesomething
+  to: container:/somewehere
