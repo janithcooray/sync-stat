@@ -1,0 +1,33 @@
+# This workflow will run tests using node and then publish a package to GitHub Packages when a release is created
+# For more information see: https://help.github.com/actions/language-and-framework-guides/publishing-nodejs-packages
+
+name: Test Node.js Package
+
+on:
+  push:
+    branches: ['*']
+  pull_request:
+    # The branches below must be a subset of the branches above
+    branches: ['*']
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: set version
+        env:
+          EVENT: '0.0.1'
+        run: |
+          echo $EVENT
+          sudo apt-get install jq
+          cat package.json | jq -r '.version'
+          PAK_VERSION="cat package.json | jq -r '.version'"
+          if [ $PAK_VERSION != "___VERSION___" ]; then exit; fi
+          sed -i "s/___VERSION___/${EVENT}/g" package.json
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - run: npm ci
+      - run: npm test
