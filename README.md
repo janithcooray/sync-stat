@@ -38,6 +38,7 @@ containers: #Array
   - name-of-container: #Array - must be defined in docker-compose or name container on start
       volumes: # Bind Mounts - Array
         - volume: # Item - config for each bind
+            profile: local # profile names will group volumes, can use run <profilename> to activate only the volumes in the group. if empty it will be activated too.
             from: app/ # From location relative to <ProjectRoot> => app/  || does not support ./app yet
             to: /var/www/html/ # to location inside docker container
             mode: 775 # Mode to write files
@@ -49,6 +50,26 @@ containers: #Array
               - node_modules/
             replace: # replace these strings when copying
               - 'localhost:mysql-db'
+
+database:
+  driver: mysql # Currently only mysql is supported
+  profile: staging # Profiles
+  method: export # [ export | dump ]
+  file: /path/to/dump.sql #[ ./relative | /absolute ]/path/to/dump.sql . will only be used when method is in export
+  server: # externel server config
+    database_user: user
+    database_name: dbname
+    database_pass: pass
+    host: server.name
+    port: 3306
+  local: # local server config. external servers can  be used too
+    provision: true # drop db if it exists, create if not exist. needs root password
+    database_user: user
+    database_name: dbname
+    database_pass: pass
+    root_password: root_password # only used for provision function
+    host: localhost
+    port: 3306
 ```
 
 ## Example
@@ -80,6 +101,7 @@ containers:
   - mytest-container:
       volumes:
         - volume:
+            profile: local
             from: app/
             to: /var/www/html/
             mode: 775
@@ -104,4 +126,24 @@ Once Containers are online run the following in the root directory
 
 ```sh
 npx syncstat run
+```
+
+running profiles
+
+```sh
+npx syncstat run <profilename>
+```
+
+when using run `<profilename>`, only volumes that match the profile name will be added. volumes without profile names will be added as well.
+
+### Running DB
+
+```sh
+npx syncstat db
+```
+
+or with profiles
+
+```sh
+npx syncstat db <profile>
 ```

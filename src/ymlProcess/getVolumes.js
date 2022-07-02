@@ -1,7 +1,20 @@
+/**
+ *
+ * getVolumes
+ *
+ * Returns the volumes in Container array
+ *
+ * Author: janithcooray
+ *
+ */
 import YamlVersion from '../abstract/ymlVersion.js';
 import VolumeInfo from './volumeData.js';
 
 export default class getVolumes extends YamlVersion {
+	/**
+	 * Returns Volumes function
+	 * @param {parent} context
+	 */
 	constructor(context) {
 		super(context);
 		this.setMinVersion(1);
@@ -9,10 +22,13 @@ export default class getVolumes extends YamlVersion {
 			'Cannot be under version 1, Please Update sync-compose'
 		);
 		this.checkCompatibility();
-
-		//return this.getVolumesFunction();
 	}
 
+	/**
+	 *
+	 * @param {Containers} container
+	 * @returns volumes in containers
+	 */
 	getVolumesFunction = container => {
 		let volumes = [];
 

@@ -1,25 +1,45 @@
-export default class VolumeInfo {
-    constructor(object){
-       return this.parse(object);
-    }
+/**
+ * Volume Data Class
+ *
+ */
+import Log from '../abstract/log';
 
-    parse(object){
-        let volumeInfo = object.volume.volume;
-        volumeInfo.id = object.id; 
-        volumeInfo.container = object.container; 
-        return this.convert(volumeInfo);
-    }
+export default class VolumeInfo extends Log {
+	/**
+	 *
+	 * @param {YML object} object
+	 * @returns JSON Object
+	 */
+	constructor(object) {
+		return this.parse(object);
+	}
 
-    convert(object){
-        this.container = object.container;
-        this.volumeId = object.id;
-        this.from= object.from,
-        this.to= object.to,
-        this.mode = object.mode,
-        this.owner = object.owner,
-        this.cmd = object.cmd,
-        this.ignore = object.ignore,
-        this.replace = object.replace,
-        this.profile = object.profile
-    }
+	/**
+	 *
+	 * @param {YAML} object
+	 * @returns Convert Function
+	 */
+	parse(object) {
+		let volumeInfo = object.volume.volume;
+		volumeInfo.id = object.id;
+		volumeInfo.container = object.container;
+		return this.convert(volumeInfo);
+	}
+
+	/**
+	 * Sets Data to Context
+	 * @param {Converted JSON} object
+	 */
+	convert(object) {
+		this.container = object.container;
+		this.volumeId = object.id;
+		(this.from = object.from),
+			(this.to = object.to),
+			(this.mode = object.mode),
+			(this.owner = object.owner),
+			(this.cmd = object.cmd),
+			(this.ignore = object.ignore),
+			(this.replace = object.replace),
+			(this.profile = object.profile);
+	}
 }
