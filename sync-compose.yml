@@ -38,19 +38,30 @@ containers:
               - node_modules/
             replace:
               - "string:string"
+      post_start:
+        - echo "install"
 
 database:
   driver: mysql
+  profile: staging
+  method: [ export | dump ]
+  file: [ ./relative | /absolute ]/path/to/dump.sql
   server:
     database_user: 
     database_name:
     database_pass:
-    host: 
-    post:
+    host:
+    port: 
   local:
     database_user: 
     database_name:
     database_pass:
     root_password:
-    host: 
-    post: 
+    host:
+    port: 
+
+cloud_storage:
+  profile: local
+  driver: GOOGLE_BUCKET_STORAGE
+  from: https://somesomething
+  to: container:/somewehere
