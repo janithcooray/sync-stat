@@ -53,6 +53,7 @@ database:
     host:
     port: 
   local:
+    drop: # drop db if it exists
     database_user: 
     database_name:
     database_pass:

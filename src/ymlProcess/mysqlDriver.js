@@ -1,4 +1,5 @@
 import YamlVersion from "../abstract/ymlVersion.js";
+import mysql from 'mysql';
 
 export default class MysqlDriver extends YamlVersion {
 
@@ -7,14 +8,19 @@ export default class MysqlDriver extends YamlVersion {
         this.setMinVersion(1);
         this.whenOnIncompatible("Cannot be under version 1, Please Update sync-compose");
         this.checkCompatibility();
-        return this.method();
+        //return true;
+    }
+
+    start(){
+        return true;
     }
 
     method(){
         if ( this.yml.database != null) {
             let mysql_method = this.yml
-
-        }
+            return true;
+        } 
+        return true;
     }
 
     /**
@@ -32,7 +38,7 @@ export default class MysqlDriver extends YamlVersion {
      * @returns true 
      */
     useDump(){
-        
+
         return true;
     }
 

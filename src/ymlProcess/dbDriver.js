@@ -1,13 +1,15 @@
-import YamlVersion from "../abstract/ymlVersion.js";
+import Log from "../abstract/log.js";
+import LoadYML from "./loadYML.js";
 import MysqlDriver from "./mysqlDriver.js";
 
-export default class dbDriver extends Log {
+export default class DbDriver extends Log {
 
     constructor(arg){
         super()
+        this.profile = arg[1];
         this.yml = new LoadYML();
 
-        return this.methodDriver();
+        this.methodDriver();
     }
 
     methodDriver(){
@@ -19,7 +21,14 @@ export default class dbDriver extends Log {
                  * Later use loop here for array of db
                  * @remember
                  */
-                 return this.isInProfile(this.yml.database.profile) ? new MysqlDriver(this.context) : true;
+                if (this.isInProfile(this.yml.database.profile)) {
+                    let mysqlDriverInst = new MysqlDriver(this);
+                    let statDriver = mysqlDriverInst.start();
+                    return statDriver;
+                }
+                else{
+                    return  true;
+                }
 
             }
             else{
