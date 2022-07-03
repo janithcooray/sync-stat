@@ -1,4 +1,6 @@
-# Docker Volume Sync for Faster Development on MacOS and Windows
+# Docker Storage Sync for Faster Development on MacOS and Windows
+
+## !Still only works on MacOS, documentation is also incomplete. please wait till release 1.0 +
 
 ## Pleast note that this is a pre-release, functionality is still partial! <br> Wait for a newer update!!
 
