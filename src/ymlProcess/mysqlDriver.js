@@ -6,7 +6,7 @@
  *
  */
 
- import YamlVersion from '../abstract/ymlVersion.js';
+import YamlVersion from '../abstract/ymlVersion.js';
  import mysqldump from 'mysqldump';
  import Importer from 'mysql-import';
  import child_process from 'child_process';
