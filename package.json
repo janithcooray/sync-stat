@@ -1,6 +1,6 @@
 {
 	"name": "sync-stat",
-	"version": "___VERSION___1",
+	"version": "___VERSION___",
 	"description": "",
 	"type": "module",
 	"main": "./bin/index.js",

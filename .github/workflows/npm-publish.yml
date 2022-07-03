@@ -48,7 +48,6 @@ jobs:
           rm -rf documentation
           rm -rf test
           rm -rf sync-compose.yml
-          rm -rf README.md
           rm -rf LICENSE.md
           rm -rf .prettierrc
           rm -rf .prettierignore
