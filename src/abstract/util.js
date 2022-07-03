@@ -23,4 +23,14 @@ export default class Util {
 	getPlatfrom() {
 		return process.platform;
 	}
+
+	/**
+	 *
+	 * @param {functionname} name
+	 * @returns function
+	 */
+	getPlatformFunction(name) {
+		let opsys = this.getPlatfrom();
+		return `${opsys}/${name}`;
+	}
 }

@@ -1,4 +1,5 @@
 import Log from '../abstract/log.js';
+import child_process from 'child_process';
 
 export default class DockerCp extends Log {
 	constructor() {
