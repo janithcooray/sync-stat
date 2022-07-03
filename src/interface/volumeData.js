@@ -2,7 +2,6 @@
  * Volume Data Class
  *
  */
-//import Log from '../abstract/log.js';
 
 export default class VolumeInfo {
 	/**

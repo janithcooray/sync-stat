@@ -8,7 +8,7 @@
  *
  */
 import YamlVersion from '../abstract/ymlVersion.js';
-import VolumeInfo from './volumeData.js';
+import VolumeInfo from '../interface/volumeData.js';
 
 export default class getVolumes extends YamlVersion {
 	/**

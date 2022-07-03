@@ -4,7 +4,6 @@
 
 export default class Util {
 	getProjectRoot = () => './';
-	//getProjectRoot = () => process.env.PWD;
 
 	isInProfile(profile) {
 		if (this.profile != null) {
@@ -22,6 +21,6 @@ export default class Util {
 	 * @returns platform
 	 */
 	getPlatfrom() {
-		return '';
+		return process.platform;
 	}
 }
