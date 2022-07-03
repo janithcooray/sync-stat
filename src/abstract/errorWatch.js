@@ -25,13 +25,11 @@ export default class ErrorWatch extends Util {
 	 *
 	 * @returns @ErrorClass
 	 */
-	static FILE_SYNTAX_ERROR = () => {
-		return new ErrorClass(
-			10001,
-			'FILE_SYNTAX_ERROR',
-			'sync-compose.yml has a syntax error'
-		);
-	};
+	static FILE_SYNTAX_ERROR = new ErrorClass(
+		10001,
+		'FILE_SYNTAX_ERROR',
+		'sync-compose.yml has a syntax error'
+	);
 }
 
-throw ErrorWatch.FILE_NOT_FOUND();
+ErrorClass.throwError(ErrorWatch.FILE_SYNTAX_ERROR);
