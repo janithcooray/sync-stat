@@ -5,6 +5,11 @@ import LinuxDockerVersion from '../linux/dockerVersion.js';
 import Win32DockerVersion from '../win32/dockerVersion.js';
 
 export default class DockerVersion extends Log {
+	/**
+	 * Check if the container is installed
+	 *
+	 * @returns boolean
+	 */
 	static isInstalled() {
 		switch (Util.getPlatfrom()) {
 			case Util.MAC_OS:
@@ -16,6 +21,11 @@ export default class DockerVersion extends Log {
 		}
 	}
 
+	/**
+	 * Check if Docker is running
+	 *
+	 * @returns boolean
+	 */
 	static isRunning() {
 		switch (Util.getPlatfrom()) {
 			case Util.MAC_OS:
@@ -28,6 +38,7 @@ export default class DockerVersion extends Log {
 	}
 
 	/**
+	 * Start docker compose
 	 *
 	 * @returns bool
 	 */
