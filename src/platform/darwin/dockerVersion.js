@@ -1,7 +1,7 @@
-import Log from '../../abstract/log.js';
 import child_process from 'child_process';
+import DockerVersion from '../source/dockerVersion.js';
 
-export default class DockerVersion extends Log {
+export default class DarwinDockerVersion extends DockerVersion {
 	/**
 	 *
 	 * @returns true if docker is installed
@@ -31,7 +31,7 @@ export default class DockerVersion extends Log {
 	 *
 	 * @returns @boolean
 	 */
-	static isRunning() {
+	static running() {
 		let isDockerRunning = false;
 		try {
 			child_process
@@ -51,6 +51,7 @@ export default class DockerVersion extends Log {
 		}
 	}
 
-	static startDocker() {}
+	static startDocker() {
+		/** NOT Implemented yet */
+	}
 }
-DockerVersion.isRunning();

@@ -2,7 +2,9 @@
  * Abstract classes for utility
  */
 
-export default class Util {
+import Constants from './constant';
+
+export default class Util extends Constants {
 	getProjectRoot = () => './';
 
 	isInProfile(profile) {
