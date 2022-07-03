@@ -54,10 +54,11 @@ database:
     port: 3306
   local:
     provision: true # drop db if it exists, create if not exist. needs root password
+    method: DOCKER
     database_user: user
     database_name: dbname
     database_pass: pass
-    root_password: root_password # only used for provision function
+    root_password: root_password # only used for provision function and docker method
     host: localhost
     port: 3306
 
