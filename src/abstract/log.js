@@ -8,4 +8,8 @@ export default class Log extends Util {
 	output(arg) {
 		console.log(arg);
 	}
+
+	static output(arg) {
+		console.log(arg);
+	}
 }

@@ -2,9 +2,10 @@
  * Abstract classes for utility
  */
 
-export default class Util {
+import Constants from './constant.js';
+
+export default class Util extends Constants {
 	getProjectRoot = () => './';
-	//getProjectRoot = () => process.env.PWD;
 
 	isInProfile(profile) {
 		if (this.profile != null) {
@@ -15,5 +16,31 @@ export default class Util {
 			}
 		}
 		return true;
+	}
+
+	/**
+	 *
+	 * @returns platform
+	 */
+	getPlatfrom() {
+		return process.platform;
+	}
+
+	/**
+	 *
+	 * @returns platform
+	 */
+	static getPlatfrom() {
+		return process.platform;
+	}
+
+	/**
+	 *
+	 * @param {functionname} name
+	 * @returns function
+	 */
+	getPlatformFunction(name) {
+		let opsys = this.getPlatfrom();
+		return `${opsys}/${name}`;
 	}
 }

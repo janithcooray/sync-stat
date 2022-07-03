@@ -32,10 +32,13 @@ export default class Init extends Log {
 			case 'db':
 				new DbDriver(args_);
 				break;
+			case 'bootsrap':
+				new DbDriver(args_);
+				new ProcessLinkYml(args_);
+				break;
 			case 'help':
 				this.help();
 				break;
-
 			case '--help':
 				this.help();
 				break;
