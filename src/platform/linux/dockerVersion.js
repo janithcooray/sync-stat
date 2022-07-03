@@ -62,7 +62,7 @@ export default class LinuxDockerVersion extends DockerVersionClass {
 	static startCompose() {
 		try {
 			child_process
-				.execSync(`docker compose -f "docker-compose.yml" up -d --build <`)
+				.execSync(`docker compose -f "docker-compose.yml" up -d --build`)
 				.toString()
 				.trim();
 			return true;

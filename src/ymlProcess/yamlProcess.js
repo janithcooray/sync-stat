@@ -9,6 +9,11 @@ import getVolumes from './getVolumes.js';
 import WatchChange from './watchChange.js';
 
 export default class ProcessYML extends Log {
+	/**
+	 * Construct Process YML Class
+	 *
+	 * @param {Array<String>} arg
+	 */
 	constructor(arg) {
 		super();
 		this.yml = new LoadYML();
