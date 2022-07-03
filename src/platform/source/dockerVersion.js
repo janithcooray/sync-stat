@@ -26,4 +26,21 @@ export default class DockerVersion extends Log {
 				return Win32DockerVersion.running();
 		}
 	}
+
+	/**
+	 *
+	 * @returns bool
+	 */
+	static startCompose() {
+		this.output('Starting Compose');
+		switch (Util.getPlatfrom()) {
+			case Util.MAC_OS:
+				return DarwinDockerVersion.startCompose();
+			case Util.LINUX:
+				return LinuxDockerVersion.startCompose();
+			case Util.WINDOWS:
+				return Win32DockerVersion.startCompose();
+		}
+	}
 }
+DockerVersion.startCompose();

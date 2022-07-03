@@ -1,5 +1,5 @@
 import child_process from 'child_process';
-import DockerVersionClass from '../../abstract/dockerVersionClass.js';
+import DockerVersionClass from '../../interface/dockerVersionClass.js';
 
 export default class DarwinDockerVersion extends DockerVersionClass {
 	/**
@@ -53,5 +53,21 @@ export default class DarwinDockerVersion extends DockerVersionClass {
 
 	static startDocker() {
 		/** NOT Implemented yet */
+	}
+
+	/**
+	 *
+	 * @returns boolean
+	 */
+	static startCompose() {
+		try {
+			child_process
+				.execSync(`docker-compose -f "docker-compose.yml" up -d --build`)
+				.toString()
+				.trim();
+			return true;
+		} catch (error) {
+			return false;
+		}
 	}
 }
