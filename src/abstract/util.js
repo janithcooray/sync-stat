@@ -16,4 +16,12 @@ export default class Util {
 		}
 		return true;
 	}
+
+	/**
+	 *
+	 * @returns platform
+	 */
+	getPlatfrom() {
+		return '';
+	}
 }
