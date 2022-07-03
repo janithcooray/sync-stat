@@ -2,7 +2,7 @@
  * Abstract classes for utility
  */
 
-import Constants from './constant';
+import Constants from './constant.js';
 
 export default class Util extends Constants {
 	getProjectRoot = () => './';
@@ -23,6 +23,14 @@ export default class Util extends Constants {
 	 * @returns platform
 	 */
 	getPlatfrom() {
+		return process.platform;
+	}
+
+	/**
+	 *
+	 * @returns platform
+	 */
+	static getPlatfrom() {
 		return process.platform;
 	}
 

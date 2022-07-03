@@ -1,7 +1,7 @@
 import child_process from 'child_process';
 import DockerVersionClass from '../../abstract/dockerVersionClass.js';
 
-export default class DarwinDockerVersion extends DockerVersionClass {
+export default class LinuxDockerVersion extends DockerVersionClass {
 	/**
 	 *
 	 * @returns true if docker is installed
