@@ -1,5 +1,6 @@
 import Log from '../../abstract/log.js';
 import DarwinPathResolver from '../darwin/pathResolver.js';
+import Win32PathResolver from '../win32/pathResolver.js';
 
 export default class PathHelper extends Log {
 	constructor() {
@@ -17,7 +18,7 @@ export default class PathHelper extends Log {
 			case Util.LINUX:
 				return LinuxDockerVersion.running();
 			case Util.WINDOWS:
-				return Win32DockerVersion.running();
+				return Win32PathResolver.isDir(path);
 		}
 	}
 
@@ -28,7 +29,7 @@ export default class PathHelper extends Log {
 			case Util.LINUX:
 				return LinuxDockerVersion.running();
 			case Util.WINDOWS:
-				return Win32DockerVersion.running();
+				return Win32PathResolver.resolvedOriginPath(path);
 		}
 	}
 
@@ -39,7 +40,7 @@ export default class PathHelper extends Log {
 			case Util.LINUX:
 				return LinuxDockerVersion.running();
 			case Util.WINDOWS:
-				return Win32DockerVersion.running();
+				return Win32PathResolver.resolvedDockerPath(path);
 		}
 	}
 }

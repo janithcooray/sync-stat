@@ -6,6 +6,13 @@ export default class DockerCp extends Log {
 		super();
 	}
 
+	/**
+	 *
+	 * @param {*} container
+	 * @param {*} from
+	 * @param {*} to
+	 * @returns
+	 */
 	copy(container, from, to) {
 		try {
 			child_process.execSync(`docker cp ${from} ${container}:${to}`);
