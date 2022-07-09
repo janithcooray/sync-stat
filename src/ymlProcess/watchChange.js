@@ -27,6 +27,11 @@ export default class WatchChange extends Log {
 	}
 
 	/**
+	 * @REMEMBER @TODO
+	 * this doesnt work on widnows due to path issues
+	 */
+
+	/**
 	 * Start Syncing files
 	 */
 	async startSync() {

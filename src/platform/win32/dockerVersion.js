@@ -7,20 +7,13 @@ export default class Win32DockerVersion extends DockerVersionClass {
 	 * @returns true if docker is installed
 	 */
 	static installed() {
-
 		try {
-			let docker = child_process
-			.execSync(`$(docker --version)`
-			)
-			.toString()
-			.trim();
+			let docker = child_process.execSync(`docker --version`).toString().trim();
+			this.output('Docker Seems to be installed');
 			return true;
-
 		} catch (error) {
 			return false;
 		}
-
-	
 	}
 
 	/**
@@ -30,10 +23,7 @@ export default class Win32DockerVersion extends DockerVersionClass {
 	static running() {
 		let isDockerRunning = false;
 		try {
-			child_process
-				.execSync(`docker version > /dev/null 2>&1`)
-				.toString()
-				.trim();
+			child_process.execSync(`docker ps`).toString().trim();
 			isDockerRunning = true;
 		} catch (error) {
 			isDockerRunning = false;
@@ -67,3 +57,5 @@ export default class Win32DockerVersion extends DockerVersionClass {
 		}
 	}
 }
+
+Win32DockerVersion.running();

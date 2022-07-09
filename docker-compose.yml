@@ -1,0 +1,8 @@
+version: '3.9'
+
+services:
+  wordpress:
+    container_name: mytest-container
+    image: sanda3cs/wordpress7.4
+    ports:
+      - '8000:80'
