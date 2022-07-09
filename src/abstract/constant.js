@@ -88,4 +88,5 @@ export default class Constants {
 	static get DOCKER_COMPOSE_UP() {
 		return 'docker-compose -f "docker-compose.yml" up -d --build';
 	}
+
 }
