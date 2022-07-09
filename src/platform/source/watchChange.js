@@ -54,8 +54,6 @@ export default class WatchChange extends Log {
 								':' +
 								this.dockerpath(path)
 						);
-						//child_process.execSync('docker exec ' + this.containerName +' chown -R '+this.owner+' '+this.dockerpath(this.getPath(path)));
-						//child_process.execSync('docker exec ' + this.containerName +' chmod -R '+this.mode+' '+this.dockerpath(this.getPath(path)));
 						console.log(
 							'✅ copied ' +
 								path +
