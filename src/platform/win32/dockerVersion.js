@@ -7,24 +7,20 @@ export default class Win32DockerVersion extends DockerVersionClass {
 	 * @returns true if docker is installed
 	 */
 	static installed() {
-		let docker = child_process
-			.execSync(
-				`
-        if [ -x "$(command -v docker)" ]; then
-            echo "OK"
-        else
-            echo "FAIL"
-        fi`
+
+		try {
+			let docker = child_process
+			.execSync(`$(docker --version)`
 			)
 			.toString()
 			.trim();
-		if (docker == 'OK') {
-			this.output('Docker is installed.. OK');
 			return true;
-		} else {
-			this.output('Docker is not installed!');
+
+		} catch (error) {
 			return false;
 		}
+
+	
 	}
 
 	/**
