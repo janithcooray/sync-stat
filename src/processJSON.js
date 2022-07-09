@@ -1,3 +1,7 @@
+/**
+ * !!! Deprecated !!!
+ *
+ */
 import Log from './abstract/log.js';
 
 export default class ProcessJSON extends Log {

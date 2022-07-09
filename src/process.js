@@ -1,4 +1,6 @@
 /**
+ * !!! Deprecated !!!
+ *
  * ProccessAction
  *
  * Will decide if the project uses JSON verion or YAML version
