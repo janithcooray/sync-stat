@@ -54,4 +54,38 @@ export default class Constants {
 	static get ERROR_OPS() {
 		return '✘';
 	}
+
+	/**
+	 * -------------------------
+	 * 		Docker Commands
+	 * -------------------------
+	 */
+
+	/**
+	 * Get Docker Version
+	 */
+	static get DOCKER_VERSION() {
+		return 'docker --version';
+	}
+
+	/**
+	 * Execute Docker Command
+	 */
+	static get DOCKER_EXEC_NON_INTERACTIVE() {
+		return 'docker exec ';
+	}
+
+	/**
+	 * Execute Docker Command IT
+	 */
+	static get DOCKER_EXEC_INTERACTIVE() {
+		return 'docker exec -it ';
+	}
+
+	/**
+	 * Start Docker Compose
+	 */
+	static get DOCKER_COMPOSE_UP() {
+		return 'docker-compose -f "docker-compose.yml" up -d --build';
+	}
 }
