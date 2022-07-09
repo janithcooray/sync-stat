@@ -19,10 +19,10 @@ export default class DarwinDockerVersion extends DockerVersionClass {
 			.toString()
 			.trim();
 		if (docker == 'OK') {
-			this.output('Docker is installed.. OK');
+			this.outputF('Docker is installed.. OK');
 			return true;
 		} else {
-			this.output('Docker is not installed!');
+			this.outputES('Docker is not installed!');
 			return false;
 		}
 	}
@@ -43,10 +43,10 @@ export default class DarwinDockerVersion extends DockerVersionClass {
 			isDockerRunning = false;
 		}
 		if (isDockerRunning) {
-			this.output('Docker is running');
+			this.outputF('Docker is running');
 			return true;
 		} else {
-			this.output('Docker is Not Running, Please Start Docker!');
+			this.outputE('Docker is Not Running, Please Start Docker!');
 			return false;
 		}
 	}

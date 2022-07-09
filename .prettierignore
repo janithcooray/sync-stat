@@ -4,6 +4,8 @@
 # Dependencies
 vendor/
 node_modules/
+documentaion/
+test/
 
 # Log files
 *.cache

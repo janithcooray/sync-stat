@@ -37,6 +37,10 @@ export default class Win32DockerVersion extends DockerVersionClass {
 		}
 	}
 
+	/**
+	 *
+	 * @returns
+	 */
 	static startDocker() {
 		/** NOT Implemented yet */
 	}

@@ -20,7 +20,7 @@ export default class ProcessYML extends Log {
 		this.containers = this.getContainers();
 		this.volumes = this.getVolumes(this.containers);
 		this.profile = arg[1];
-		this.output('🚀 no. of sync ops ' + this.volumes.length);
+		this.outputS('no. of sync ops ' + this.volumes.length);
 		this.startSync(this.volumes);
 	}
 
@@ -56,8 +56,7 @@ export default class ProcessYML extends Log {
 			if (this.isInProfile(element.profile)) {
 				let changes = new WatchChange(element);
 				this.output(
-					'🚀 ' +
-						element.container +
+					element.container +
 						' will be synced on ' +
 						element.from +
 						':' +

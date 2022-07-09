@@ -42,7 +42,8 @@ export default class MysqlDriver extends YamlVersion {
 			let mysql_method = this.yml.database.method;
 			switch (mysql_method) {
 				case 'dump':
-					this.output('Starting Dump');
+					this.outputS('Starting Dump');
+
 					this.useFromServer();
 					break;
 				case 'export':
@@ -51,7 +52,8 @@ export default class MysqlDriver extends YamlVersion {
 					break;
 
 				default:
-					this.output('unknow db export method');
+					this.outputE('unknow db export method');
+
 					process.exitCode(0);
 					break;
 			}
@@ -152,7 +154,8 @@ export default class MysqlDriver extends YamlVersion {
 	 */
 	importFromDocker(file) {
 		let config = this.yml.database.local;
-		this.output(config);
+		//this.output(config);
+
 		this.output('Copying SQL');
 
 		child_process.execSync(
