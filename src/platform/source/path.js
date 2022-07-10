@@ -1,4 +1,5 @@
 import Log from '../../abstract/log.js';
+import Util from '../../abstract/util.js';
 import DarwinPathResolver from '../darwin/pathResolver.js';
 import Win32PathResolver from '../win32/pathResolver.js';
 

@@ -11,6 +11,7 @@
 import Log from '../abstract/log.js';
 import chokidar from 'chokidar';
 import child_process from 'child_process';
+import DockerCp from '../platform/source/dockerCp.js';
 export default class WatchChange extends Log {
 	/**
 	 * Init Watch Change
@@ -104,18 +105,13 @@ export default class WatchChange extends Log {
 	 * Start watch by running initial Commands
 	 */
 	up() {
-		this.output('🚀 Copying Source to ' + this.containerName);
-		child_process.execSync(
-			'docker cp "' +
-				this.dcpeParse(this.fromPath) +
-				'" ' +
-				this.containerName +
-				':' +
-				this.volumePath
-		);
-		console.log('✅ Ok');
+		this.outputS('Copying Source to ' + this.containerName);
 
-		this.output('🚀 Changing Destination Owner for ' + this.containerName);
+		DockerCp.copy(this.containerName, this.fromPath, this.volumePath);
+
+		this.outputF('ok');
+
+		this.outputS('Changing Destination Owner for ' + this.containerName);
 		child_process.execSync(
 			'docker exec ' +
 				this.containerName +
@@ -124,9 +120,9 @@ export default class WatchChange extends Log {
 				' ' +
 				this.volumePath
 		);
-		console.log('✅ Ok');
+		this.outputF('ok');
 
-		this.output('🚀 Changing Destination Mode for ' + this.containerName);
+		this.outputS('Changing Destination Mode for ' + this.containerName);
 		child_process.execSync(
 			'docker exec ' +
 				this.containerName +
@@ -135,21 +131,21 @@ export default class WatchChange extends Log {
 				' ' +
 				this.volumePath
 		);
-		console.log('✅ Ok');
+		this.outputF('ok');
 
-		this.output('✅ Sync Ready for ' + this.containerName);
+		this.output('Sync Ready for ' + this.containerName);
 
 		if (this.cmd != null) {
 			this.cmd.forEach(element => {
-				this.output('🚀 ' + this.containerName + ' ' + element);
+				this.outputS(this.containerName + ' ' + element);
 				child_process.execSync(
 					'docker exec ' + this.containerName + ' ' + element
 				);
-				console.log('✅ Ok');
+				this.outputF('ok');
 			});
 		}
 
-		this.startSync();
+		//this.startSync();
 	}
 
 	/**

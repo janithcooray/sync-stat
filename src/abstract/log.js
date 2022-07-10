@@ -6,7 +6,7 @@ import Util from './util.js';
  */
 export default class Log extends Util {
 	output(arg) {
-		console.log(arg);
+		console.log(Util.INFO + ' ' + arg);
 	}
 
 	/**
@@ -21,7 +21,7 @@ export default class Log extends Util {
 	 * Start Ops output
 	 * @param {String} arg
 	 */
-	static outputS(arg) {
+	outputS(arg) {
 		console.log(Util.START_OPS + ' ' + arg);
 	}
 
@@ -29,7 +29,7 @@ export default class Log extends Util {
 	 * Middle Ops Output
 	 * @param {String} arg
 	 */
-	static outputO(arg) {
+	outputO(arg) {
 		console.log(Util.ONGOING_OPS + ' ' + arg);
 	}
 
@@ -37,7 +37,7 @@ export default class Log extends Util {
 	 * Finished Output
 	 * @param {String} arg
 	 */
-	static outputF(arg) {
+	outputF(arg) {
 		console.log(Util.FINISHED_SUCCESS_OPS + ' ' + arg);
 	}
 
@@ -45,7 +45,7 @@ export default class Log extends Util {
 	 * Error Output
 	 * @param {String} arg
 	 */
-	static outputE(arg) {
+	outputE(arg) {
 		console.log(Util.ERROR_OPS + ' ' + arg);
 	}
 
