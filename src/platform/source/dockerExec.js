@@ -1,4 +1,4 @@
-import Log from '../abstract/log.js';
+import Log from '../../abstract/log.js';
 import child_process from 'child_process';
 
 export default class DockerExec extends Log {
@@ -17,6 +17,7 @@ export default class DockerExec extends Log {
 	static execNoneInteractivly(container, arg, acceptFail = false) {
 		try {
 			child_process.execSync(`docker exec ${container} ${arg}`);
+			this.outputF('ok');
 		} catch (error) {
 			return false;
 		}
@@ -35,6 +36,7 @@ export default class DockerExec extends Log {
 	static execInteractivly(container, arg, acceptFail = false) {
 		try {
 			child_process.execSync(`docker exec -i ${container} ${arg}`);
+			this.outputF('ok');
 		} catch (error) {
 			return false;
 		}

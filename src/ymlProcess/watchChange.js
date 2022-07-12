@@ -12,6 +12,7 @@ import Log from '../abstract/log.js';
 import chokidar from 'chokidar';
 import child_process from 'child_process';
 import DockerCp from '../platform/source/dockerCp.js';
+import DockerExec from '../platform/source/dockerExec.js';
 export default class WatchChange extends Log {
 	/**
 	 * Init Watch Change
@@ -109,39 +110,32 @@ export default class WatchChange extends Log {
 
 		DockerCp.copy(this.containerName, this.fromPath, this.volumePath);
 
-		this.outputF('ok');
-
 		this.outputS('Changing Destination Owner for ' + this.containerName);
-		child_process.execSync(
-			'docker exec ' +
-				this.containerName +
-				' chown -R ' +
-				this.owner +
-				' ' +
-				this.volumePath
+
+		DockerExec.execNoneInteractivly(
+			this.containerName,
+			`chown -R ${this.owner} ${this.volumePath} `,
+			false
 		);
-		this.outputF('ok');
 
 		this.outputS('Changing Destination Mode for ' + this.containerName);
-		child_process.execSync(
-			'docker exec ' +
-				this.containerName +
-				' chmod -R ' +
-				this.mode +
-				' ' +
-				this.volumePath
+
+		DockerExec.execNoneInteractivly(
+			this.containerName,
+			`chmod -R ${this.mode} ${this.volumePath} `,
+			false
 		);
-		this.outputF('ok');
 
 		this.output('Sync Ready for ' + this.containerName);
 
 		if (this.cmd != null) {
 			this.cmd.forEach(element => {
 				this.outputS(this.containerName + ' ' + element);
-				child_process.execSync(
-					'docker exec ' + this.containerName + ' ' + element
+				DockerExec.execNoneInteractivly(
+					this.containerName,
+					` ${element} `,
+					false
 				);
-				this.outputF('ok');
 			});
 		}
 
