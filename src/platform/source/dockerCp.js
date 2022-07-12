@@ -1,11 +1,8 @@
-import Log from '../abstract/log.js';
 import child_process from 'child_process';
+import Log from '../../abstract/log.js';
+import PathHelper from './path.js';
 
 export default class DockerCp extends Log {
-	constructor() {
-		super();
-	}
-
 	/**
 	 *
 	 * @param {*} container
@@ -13,9 +10,13 @@ export default class DockerCp extends Log {
 	 * @param {*} to
 	 * @returns
 	 */
-	copy(container, from, to) {
+	static copy(container, from, to) {
+		Log.output(`docker cp ${PathHelper.isDir(from)} ${container}:${to}`);
 		try {
-			child_process.execSync(`docker cp ${from} ${container}:${to}`);
+			child_process.execSync(
+				`docker cp ${PathHelper.isDir(from)} ${container}:${to}`
+			);
+			this.outputF('ok');
 		} catch (error) {
 			return false;
 		}

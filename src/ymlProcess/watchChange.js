@@ -11,6 +11,8 @@
 import Log from '../abstract/log.js';
 import chokidar from 'chokidar';
 import child_process from 'child_process';
+import DockerCp from '../platform/source/dockerCp.js';
+import DockerExec from '../platform/source/dockerExec.js';
 export default class WatchChange extends Log {
 	/**
 	 * Init Watch Change
@@ -104,52 +106,40 @@ export default class WatchChange extends Log {
 	 * Start watch by running initial Commands
 	 */
 	up() {
-		this.output('🚀 Copying Source to ' + this.containerName);
-		child_process.execSync(
-			'docker cp "' +
-				this.dcpeParse(this.fromPath) +
-				'" ' +
-				this.containerName +
-				':' +
-				this.volumePath
-		);
-		console.log('✅ Ok');
+		this.outputS('Copying Source to ' + this.containerName);
 
-		this.output('🚀 Changing Destination Owner for ' + this.containerName);
-		child_process.execSync(
-			'docker exec ' +
-				this.containerName +
-				' chown -R ' +
-				this.owner +
-				' ' +
-				this.volumePath
-		);
-		console.log('✅ Ok');
+		DockerCp.copy(this.containerName, this.fromPath, this.volumePath);
 
-		this.output('🚀 Changing Destination Mode for ' + this.containerName);
-		child_process.execSync(
-			'docker exec ' +
-				this.containerName +
-				' chmod -R ' +
-				this.mode +
-				' ' +
-				this.volumePath
-		);
-		console.log('✅ Ok');
+		this.outputS('Changing Destination Owner for ' + this.containerName);
 
-		this.output('✅ Sync Ready for ' + this.containerName);
+		DockerExec.execNoneInteractivly(
+			this.containerName,
+			`chown -R ${this.owner} ${this.volumePath} `,
+			false
+		);
+
+		this.outputS('Changing Destination Mode for ' + this.containerName);
+
+		DockerExec.execNoneInteractivly(
+			this.containerName,
+			`chmod -R ${this.mode} ${this.volumePath} `,
+			false
+		);
+
+		this.output('Sync Ready for ' + this.containerName);
 
 		if (this.cmd != null) {
 			this.cmd.forEach(element => {
-				this.output('🚀 ' + this.containerName + ' ' + element);
-				child_process.execSync(
-					'docker exec ' + this.containerName + ' ' + element
+				this.outputS(this.containerName + ' ' + element);
+				DockerExec.execNoneInteractivly(
+					this.containerName,
+					` ${element} `,
+					false
 				);
-				console.log('✅ Ok');
 			});
 		}
 
-		this.startSync();
+		//this.startSync();
 	}
 
 	/**
