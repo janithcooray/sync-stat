@@ -23,6 +23,11 @@ export default class PathHelper extends Log {
 		}
 	}
 
+	/**
+	 *
+	 * @param {string} path
+	 * @returns unix-friendly path of project
+	 */
 	static resolvedOriginPath(path) {
 		switch (Util.getPlatfrom()) {
 			case Util.MAC_OS:
@@ -34,6 +39,11 @@ export default class PathHelper extends Log {
 		}
 	}
 
+	/**
+	 *
+	 * @param {string} path
+	 * @returns unix-friendly path of docker
+	 */
 	static resolvedDockerPath(path) {
 		switch (Util.getPlatfrom()) {
 			case Util.MAC_OS:
