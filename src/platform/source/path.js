@@ -33,7 +33,7 @@ export default class PathHelper extends Log {
 			case Util.MAC_OS:
 				return DarwinPathResolver.resolvedOriginPath(path);
 			case Util.LINUX:
-				return LinuxDockerVersion.running();
+				return LinuxDockerVersion.resolvedOriginPath();
 			case Util.WINDOWS:
 				return Win32PathResolver.resolvedOriginPath(path);
 		}
@@ -49,7 +49,7 @@ export default class PathHelper extends Log {
 			case Util.MAC_OS:
 				return DarwinPathResolver.resolvedDockerPath(path);
 			case Util.LINUX:
-				return LinuxDockerVersion.running();
+				return LinuxDockerVersion.resolvedDockerPath();
 			case Util.WINDOWS:
 				return Win32PathResolver.resolvedDockerPath(path);
 		}
