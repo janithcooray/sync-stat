@@ -48,21 +48,11 @@ export default class WatchChange extends Log {
 								' mkdir -p ' +
 								this.dockerpath(this.getPath(path))
 						);
-						child_process.execSync(
-							'docker cp "' +
-								path +
-								'" ' +
-								this.containerName +
-								':' +
-								this.dockerpath(path)
-						);
-						console.log(
-							'✅ copied ' +
-								path +
-								' to ' +
-								this.containerName +
-								':' +
-								this.dockerpath(path)
+						DockerCp.copyD(
+							this.containerName,
+							path,
+							this.fromPath,
+							this.volumePath
 						);
 					} catch (error) {
 						console.log(
@@ -139,7 +129,7 @@ export default class WatchChange extends Log {
 			});
 		}
 
-		//this.startSync();
+		this.startSync();
 	}
 
 	/**

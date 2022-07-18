@@ -14,5 +14,5 @@ export default class PathResolverClass extends Log {
 	/**
 	 * get Compatible Docker Path
 	 */
-	static resolvedDockerPath(path) {}
+	static resolvedDockerPath(from, proot, croot) {}
 }

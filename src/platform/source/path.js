@@ -17,7 +17,7 @@ export default class PathHelper extends Log {
 			case Util.MAC_OS:
 				return DarwinPathResolver.isDir(path);
 			case Util.LINUX:
-				return LinuxDockerVersion.running();
+				return LinuxDockerVersion.isDir();
 			case Util.WINDOWS:
 				return Win32PathResolver.isDir(path);
 		}
@@ -33,7 +33,7 @@ export default class PathHelper extends Log {
 			case Util.MAC_OS:
 				return DarwinPathResolver.resolvedOriginPath(path);
 			case Util.LINUX:
-				return LinuxDockerVersion.running();
+				return LinuxDockerVersion.resolvedOriginPath(path);
 			case Util.WINDOWS:
 				return Win32PathResolver.resolvedOriginPath(path);
 		}
@@ -44,14 +44,14 @@ export default class PathHelper extends Log {
 	 * @param {string} path
 	 * @returns unix-friendly path of docker
 	 */
-	static resolvedDockerPath(path) {
+	static resolvedDockerPath(from, proot, croot) {
 		switch (Util.getPlatfrom()) {
 			case Util.MAC_OS:
-				return DarwinPathResolver.resolvedDockerPath(path);
+				return DarwinPathResolver.resolvedDockerPath(from, proot, croot);
 			case Util.LINUX:
-				return LinuxDockerVersion.running();
+				return LinuxDockerVersion.resolvedDockerPath(from, proot, croot);
 			case Util.WINDOWS:
-				return Win32PathResolver.resolvedDockerPath(path);
+				return Win32PathResolver.resolvedDockerPath(from, proot, croot);
 		}
 	}
 }

@@ -1,6 +1,6 @@
 import PathResolverClass from '../../interface/pathResolverClass.js';
 
-export default class DarwinPathResolver extends PathResolverClass {
+export default class LinuxPathResolver extends PathResolverClass {
 	/**
 	 *
 	 * @param {*} path

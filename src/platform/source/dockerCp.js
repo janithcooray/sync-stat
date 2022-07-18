@@ -23,4 +23,31 @@ export default class DockerCp extends Log {
 
 		return true;
 	}
+
+	/**
+	 *
+	 * @param {*} container
+	 * @param {*} from
+	 * @param {*} to
+	 * @returns
+	 */
+	static copyD(container, from, proot, croot) {
+		/*Log.output(
+			`docker cp ${PathHelper.isDir(
+				PathHelper.resolvedOriginPath(from)
+			)} ${container}:${PathHelper.resolvedDockerPath(from, proot, croot)}`
+		);*/
+		try {
+			child_process.execSync(
+				`docker cp ${PathHelper.isDir(
+					PathHelper.resolvedOriginPath(from)
+				)} ${container}:${PathHelper.resolvedDockerPath(from, proot, croot)}`
+			);
+			this.outputF(' Write 1 file');
+		} catch (error) {
+			return false;
+		}
+
+		return true;
+	}
 }

@@ -11,11 +11,13 @@ export default class Win32PathResolver extends PathResolverClass {
 	 *
 	 * @param {String} path
 	 */
-	static resolvedOriginPath(path) {}
+	static resolvedOriginPath(path) {
+		return path;
+	}
 
 	/**
 	 *
 	 * @param {String} path
 	 */
-	static resolvedDockerPath(path) {}
+	static resolvedDockerPath(from, proot, croot) {}
 }
