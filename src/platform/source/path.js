@@ -17,7 +17,7 @@ export default class PathHelper extends Log {
 			case Util.MAC_OS:
 				return DarwinPathResolver.isDir(path);
 			case Util.LINUX:
-				return LinuxDockerVersion.running();
+				return LinuxDockerVersion.isDir();
 			case Util.WINDOWS:
 				return Win32PathResolver.isDir(path);
 		}

@@ -40,6 +40,9 @@ export default class WatchChange extends Log {
 		chokidar
 			.watch(this.fromPath, { ignoreInitial: true, usePolling: false })
 			.on('all', (event, path) => {
+				DockerCp.copy(this.containerName, path, this.path);
+
+				/*
 				if (event == 'change' || event == 'add') {
 					try {
 						child_process.execSync(
@@ -52,14 +55,6 @@ export default class WatchChange extends Log {
 							'docker cp "' +
 								path +
 								'" ' +
-								this.containerName +
-								':' +
-								this.dockerpath(path)
-						);
-						console.log(
-							'✅ copied ' +
-								path +
-								' to ' +
 								this.containerName +
 								':' +
 								this.dockerpath(path)
@@ -98,7 +93,7 @@ export default class WatchChange extends Log {
 							this.dockerpath(path) +
 							''
 					);
-				}
+				}*/
 			});
 	}
 
@@ -139,7 +134,7 @@ export default class WatchChange extends Log {
 			});
 		}
 
-		//this.startSync();
+		this.startSync();
 	}
 
 	/**
