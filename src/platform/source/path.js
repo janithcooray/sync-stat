@@ -44,14 +44,14 @@ export default class PathHelper extends Log {
 	 * @param {string} path
 	 * @returns unix-friendly path of docker
 	 */
-	static resolvedDockerPath(path) {
+	static resolvedDockerPath(from, to) {
 		switch (Util.getPlatfrom()) {
 			case Util.MAC_OS:
-				return DarwinPathResolver.resolvedDockerPath(path);
+				return DarwinPathResolver.resolvedDockerPath(from, to);
 			case Util.LINUX:
-				return LinuxDockerVersion.resolvedDockerPath();
+				return LinuxDockerVersion.resolvedDockerPath(from, to);
 			case Util.WINDOWS:
-				return Win32PathResolver.resolvedDockerPath(path);
+				return Win32PathResolver.resolvedDockerPath(from, to);
 		}
 	}
 }

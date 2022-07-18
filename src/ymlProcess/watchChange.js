@@ -40,7 +40,7 @@ export default class WatchChange extends Log {
 		chokidar
 			.watch(this.fromPath, { ignoreInitial: true, usePolling: false })
 			.on('all', (event, path) => {
-				DockerCp.copy(this.containerName, path, this.path);
+				DockerCp.copyD(this.containerName, path, this.volumePath);
 
 				/*
 				if (event == 'change' || event == 'add') {
