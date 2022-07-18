@@ -9,7 +9,18 @@ export default class LinuxPathResolver extends PathResolverClass {
 		return path.endsWith('/') ? path + '.' : path;
 	}
 
-	static resolvedOriginPath(path) {}
+	static resolvedOriginPath(path) {
+		return path;
+	}
 
-	static resolvedDockerPath(from, to) {}
+	static resolvedDockerPath(from, proot, croot) {
+		/**
+		 * Uses Unix Like paths
+		 */
+		//let origin_relative = from.split('/');
+		//origin_relative.pop();
+		//origin_relative.join('/');
+
+		return '"' + from.replace(proot, croot) + '"';
+	}
 }

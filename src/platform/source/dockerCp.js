@@ -31,20 +31,22 @@ export default class DockerCp extends Log {
 	 * @param {*} to
 	 * @returns
 	 */
-	static copyD(container, from, to) {
-		Log.output(
+	static copyD(container, from, proot, croot) {
+		/*Log.output(
 			`docker cp ${PathHelper.isDir(
 				PathHelper.resolvedOriginPath(from)
-			)} ${container}:${PathHelper.resolvedDockerPath(from, to)}`
-		);
-		/*try {
+			)} ${container}:${PathHelper.resolvedDockerPath(from, proot, croot)}`
+		);*/
+		try {
 			child_process.execSync(
-				`docker cp ${PathHelper.isDir(from)} ${container}:${to}`
+				`docker cp ${PathHelper.isDir(
+					PathHelper.resolvedOriginPath(from)
+				)} ${container}:${PathHelper.resolvedDockerPath(from, proot, croot)}`
 			);
-			this.outputF('ok');
+			this.outputF(' Write 1 file');
 		} catch (error) {
 			return false;
-		}*/
+		}
 
 		return true;
 	}

@@ -9,16 +9,18 @@ export default class DarwinPathResolver extends PathResolverClass {
 		return path.endsWith('/') ? path + '.' : path;
 	}
 
-	static resolvedOriginPath(path) {}
+	static resolvedOriginPath(path) {
+		return path;
+	}
 
-	static resolvedDockerPath(from, to) {
+	static resolvedDockerPath(from, proot, croot) {
 		/**
 		 * Uses Unix Like paths
 		 */
-		let pieces = params.split('/');
-		pieces.pop();
-		let origin_relative = pieces.join('/');
+		//let origin_relative = from.split('/');
+		//origin_relative.pop();
+		//origin_relative.join('/');
 
-		return;
+		return '"' + from.replace(proot, croot) + '"';
 	}
 }
