@@ -11,5 +11,14 @@ export default class DarwinPathResolver extends PathResolverClass {
 
 	static resolvedOriginPath(path) {}
 
-	static resolvedDockerPath(from, to) {}
+	static resolvedDockerPath(from, to) {
+		/**
+		 * Uses Unix Like paths
+		 */
+		let pieces = params.split('/');
+		pieces.pop();
+		let origin_relative = pieces.join('/');
+
+		return;
+	}
 }
