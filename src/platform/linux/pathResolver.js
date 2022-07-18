@@ -11,5 +11,5 @@ export default class LinuxPathResolver extends PathResolverClass {
 
 	static resolvedOriginPath(path) {}
 
-	static resolvedDockerPath(path) {}
+	static resolvedDockerPath(from, to) {}
 }

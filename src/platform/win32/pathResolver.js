@@ -17,5 +17,5 @@ export default class Win32PathResolver extends PathResolverClass {
 	 *
 	 * @param {String} path
 	 */
-	static resolvedDockerPath(path) {}
+	static resolvedDockerPath(from, to) {}
 }
