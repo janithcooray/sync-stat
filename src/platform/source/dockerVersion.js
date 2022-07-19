@@ -1,6 +1,6 @@
 import Log from '../../abstract/log.js';
 import Util from '../../abstract/util.js';
-import DarwinDockerVersion from '../darwin/DockerVersion.js';
+import DarwinDockerVersion from '../darwin/dockerVersion.js';
 import LinuxDockerVersion from '../linux/dockerVersion.js';
 import Win32DockerVersion from '../win32/dockerVersion.js';
 
