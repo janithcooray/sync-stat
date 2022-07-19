@@ -5,19 +5,24 @@ export default class Win32PathResolver extends PathResolverClass {
 	 *
 	 * @param {*} path
 	 */
-	static isDir(path) {}
-
-	/**
-	 *
-	 * @param {String} path
-	 */
-	static resolvedOriginPath(path) {
-		return path;
+	static isDir(path) {
+		return path.endsWith('/') ? path + '.' : path;
 	}
 
 	/**
 	 *
 	 * @param {String} path
 	 */
-	static resolvedDockerPath(from, proot, croot) {}
+	static resolvedOriginPath(path) {
+		return path.split('\\').join('/');
+	}
+
+	/**
+	 *
+	 * @param {String} path
+	 */
+	static resolvedDockerPath(from, proot, croot) {
+		console.log(from + ' - ' + proot + ' - ' + croot);
+		return '"' + from.replace(proot, croot) + '"';
+	}
 }

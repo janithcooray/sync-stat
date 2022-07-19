@@ -12,6 +12,8 @@ export default class Win32DockerVersion extends DockerVersionClass {
 			this.output('Docker Seems to be installed');
 			return true;
 		} catch (error) {
+			this.output('Docker does not to be installed');
+			process.exit();
 			return false;
 		}
 	}
@@ -33,6 +35,7 @@ export default class Win32DockerVersion extends DockerVersionClass {
 			return true;
 		} else {
 			this.output('Docker is Not Running, Please Start Docker!');
+			process.exit();
 			return false;
 		}
 	}

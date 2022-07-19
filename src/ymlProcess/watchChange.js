@@ -13,6 +13,8 @@ import chokidar from 'chokidar';
 import child_process from 'child_process';
 import DockerCp from '../platform/source/dockerCp.js';
 import DockerExec from '../platform/source/dockerExec.js';
+import PathHelper from '../platform/source/path.js';
+
 export default class WatchChange extends Log {
 	/**
 	 * Init Watch Change
@@ -46,7 +48,11 @@ export default class WatchChange extends Log {
 							'docker exec ' +
 								this.containerName +
 								' mkdir -p ' +
-								this.dockerpath(this.getPath(path))
+								PathHelper.resolvedDockerPath(
+									path,
+									this.fromPath,
+									this.volumePath
+								)
 						);
 						DockerCp.copyD(
 							this.containerName,

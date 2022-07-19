@@ -5,7 +5,8 @@
 	"type": "module",
 	"main": "./bin/index.js",
 	"bin": {
-		"syncstat": "./bin/index.js"
+		"syncstat": "./bin/index.js",
+		"sync-stat": "\\bin\\index.js"
 	},
 	"repository": {
 		"type": "git",

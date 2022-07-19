@@ -21,6 +21,10 @@ export default class ProcessYML extends Log {
 		this.containers = this.getContainers();
 		this.volumes = this.getVolumes(this.containers);
 		this.profile = arg[1];
+
+		DockerVersion.isInstalled();
+		DockerVersion.isRunning();
+
 		this.outputS('no. of sync ops ' + this.volumes.length);
 		if (this.yml.start_compose != null) {
 			DockerVersion.startCompose(this.yml);
