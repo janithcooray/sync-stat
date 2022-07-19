@@ -49,10 +49,10 @@ export default class Win32DockerVersion extends DockerVersionClass {
 	 *
 	 * @returns boolean
 	 */
-	static startCompose() {
+	static startCompose(yml) {
 		try {
 			child_process
-				.execSync(`docker compose -f "docker-compose.yml" up -d --build`)
+				.execSync(`docker-compose -f "${yml.start_compose}" up -d --build`)
 				.toString()
 				.trim();
 			return true;
@@ -61,5 +61,3 @@ export default class Win32DockerVersion extends DockerVersionClass {
 		}
 	}
 }
-
-Win32DockerVersion.running();

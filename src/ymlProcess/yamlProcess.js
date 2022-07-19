@@ -7,6 +7,7 @@ import LoadYML from './loadYML.js';
 import GetContainers from './getContainers.js';
 import getVolumes from './getVolumes.js';
 import WatchChange from './watchChange.js';
+import DockerVersion from '../platform/source/dockerVersion.js';
 
 export default class ProcessYML extends Log {
 	/**
@@ -21,6 +22,9 @@ export default class ProcessYML extends Log {
 		this.volumes = this.getVolumes(this.containers);
 		this.profile = arg[1];
 		this.outputS('no. of sync ops ' + this.volumes.length);
+		if (this.yml.start_compose != null) {
+			DockerVersion.startCompose(this.yml);
+		}
 		this.startSync(this.volumes);
 	}
 

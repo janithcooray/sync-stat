@@ -42,15 +42,15 @@ export default class DockerVersion extends Log {
 	 *
 	 * @returns bool
 	 */
-	static startCompose() {
-		this.output('Starting Compose');
+	static startCompose(yml) {
+		this.outputS('Starting Compose');
 		switch (Util.getPlatfrom()) {
 			case Util.MAC_OS:
-				return DarwinDockerVersion.startCompose();
+				return DarwinDockerVersion.startCompose(yml);
 			case Util.LINUX:
-				return LinuxDockerVersion.startCompose();
+				return LinuxDockerVersion.startCompose(yml);
 			case Util.WINDOWS:
-				return Win32DockerVersion.startCompose();
+				return Win32DockerVersion.startCompose(yml);
 		}
 	}
 }
